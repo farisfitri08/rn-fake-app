@@ -35,9 +35,6 @@ export default function Chat({onlineStatus, navigation, name}) {
   },[])
 
   useEffect(() => {
-
-    // check if async item
-    console.log(name);
     var newMessage = [
       {
         _id: 1,
@@ -51,16 +48,13 @@ export default function Chat({onlineStatus, navigation, name}) {
       },
     ];
 
-    // const checkMessage = checkMessageStorage();
     checkMessageStorage().then(checkMessage => {
       if(checkMessage != null) {
-        console.log(checkMessage);
         newMessage = checkMessage;
       }
 
       setMessages(newMessage);
     });
-    
   }, [])
 
   useEffect(() => {

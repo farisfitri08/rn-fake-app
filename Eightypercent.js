@@ -8,15 +8,60 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
   const [data, setData] = useState('online');
-    
-  const onlineStatus = (onlineData) => {
-    setData(onlineData);
+
+  const [storeData, setStoreData] = useState({});
+  async function store() {
+    await AsyncStorage.setItem('Foo', 'BAR' + Date.now());
+    await AsyncStorage.setItem('Max', JSON.stringify(Math.random()));
   }
+  async function load() {
+    const sample = `
+{
+  "SnackDeviceId": "42c01easbeae6d3b52ea",
+  "snack-reload-url": "{\\"url\\":\\"exp://exp.host/@snack/sdk.43.0.0-8dYHkOSfdH\\",\\"timestamp\\":1649300280622}",
+  "Foo": "BAR1649sadf353538529",
+  "EXPO_CONSTANTS_INSTALLATION_ID": "cd147e19-892c-4dec-b307-c243239c8f14",
+  "Max": "0.43234314145824015"
+}
+`;
+    const data = JSON.parse(sample);
+    const keyValuePairs = Object.entries(data)
+      .map(([key, value]) => [key, value])
+      .reduce((acc, row) => [...acc, row], []);
+    await AsyncStorage.multiSet(keyValuePairs);
+    await dump();
+  }
+
+  async function dump() {
+    const keys = await AsyncStorage.getAllKeys();
+    const stores = await AsyncStorage.multiGet(keys);
+    const data = stores.reduce(
+      (acc, row) => ({ ...acc, [row[0]]: row[1] }),
+      {}
+    );
+    setStoreData(data);
+  }
+
+  useEffect(()=>{
+    (async ()=>dump())()
+  },[])
+    
+    const onlineStatus = (onlineData) => {
+      setData(onlineData);
+    }
+  
 
   function Home({ navigation }) {
 
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={styles.paragraph}>{JSON.stringify(storeData, null, 2)}</Text>
+      <Button title="store" onPress={store} />
+      <Text style={styles.paragraph}>Puts the contents of a JSON</Text>
+      <Button title="dump" onPress={dump} />
+      <Text style={styles.paragraph}>Load contents of JSON</Text>
+
+      <Button title="load" onPress={load} />
         <Button
           title="Chat 1"
           onPress={() => navigation.navigate('Chat1')}

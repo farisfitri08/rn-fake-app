@@ -11,11 +11,34 @@ export default function Chat({onlineStatus, navigation}) {
   
 
   var autoMessages = require('./autoChat.json');
-  
 
+  async function load() {
+    var messageString = JSON.stringify(messages);
+    if(messages.length != 0) {
+      await AsyncStorage.setItem('chat_1', messageString);
+    }
+  }
+
+  async function checkMessageStorage() {
+    const oldMessage = await AsyncStorage.getItem('chat_1');
+    var oldMessageJson = JSON.parse(oldMessage);
+    
+    if(oldMessage != null) {
+      return oldMessageJson;
+    }
+
+    return null;
+  }
+
+  useEffect(()=>{
+    (async ()=>load())()
+  },[])
 
   useEffect(() => {
-    setMessages([
+
+    // check if async item
+    
+    var newMessage = [
       {
         _id: 1,
         text: 'Hello developer',
@@ -26,7 +49,18 @@ export default function Chat({onlineStatus, navigation}) {
           avatar: 'https://placeimg.com/140/140/any',
         },
       },
-    ])
+    ];
+
+    // const checkMessage = checkMessageStorage();
+    checkMessageStorage().then(checkMessage => {
+      if(checkMessage != null) {
+        console.log(checkMessage);
+        newMessage = checkMessage;
+      }
+
+      setMessages(newMessage);
+    });
+    
   }, [])
 
   useEffect(() => {
@@ -43,7 +77,7 @@ export default function Chat({onlineStatus, navigation}) {
 
       setNowOnlineStatus(nowOnlineStatus);
       navigation.setOptions({ headerTitle: (props) => <LogoTitle {...props} /> });
-
+      (async ()=>load())()
     }
      
   }, [messages]);
@@ -70,7 +104,7 @@ export default function Chat({onlineStatus, navigation}) {
   const onSend = useCallback((messages = []) => {
 
     setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
-    
+    load(messages);
     autoBot();
     
   }, [])
@@ -93,9 +127,11 @@ export default function Chat({onlineStatus, navigation}) {
       });
 
       var autoMessage = JSON.parse(parsedString);
-
+      
       setMessages(previousMessages => GiftedChat.append(previousMessages, autoMessage))
-    }, 5000);
+
+      load(autoMessage);
+    }, 3);
 
   }, []);
   

@@ -8,15 +8,84 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
   const [data, setData] = useState('online');
-    
-  const onlineStatus = (onlineData) => {
-    setData(onlineData);
+
+  const [storeData, setStoreData] = useState([{}]);
+
+  useEffect(()=>{
+    clear()
+  },[])
+
+  async function clear() {
+
+    await AsyncStorage.clear()
   }
+
+  async function store() {
+    
+    const chat = [
+      {
+        _id: 1,
+        text: 'Hello developer',
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: 'React Native',
+          avatar: 'https://placeimg.com/140/140/any',
+        },
+      },
+    ];
+
+    var messageString = JSON.stringify(chat);
+
+    await AsyncStorage.setItem('chat_1', messageString);
+  }
+  async function load() {
+    const oldMessage = await AsyncStorage.getItem('chat_1');
+    var oldMessageJson = JSON.parse(oldMessage);
+    
+    if(oldMessage != null) {
+      const new_chat = [
+        {
+          _id: 1,
+          text: 'Testing two',
+          createdAt: new Date(),
+          user: {
+            _id: 2,
+            name: 'React Native',
+            avatar: 'https://placeimg.com/150/150/any',
+          },
+        },
+      ];
+
+      oldMessageJson = oldMessageJson.concat(new_chat);
+
+      var newData = JSON.stringify(oldMessageJson);
+      
+      await AsyncStorage.setItem('chat_1', newData);
+      setStoreData(newData);
+    }
+  }
+
+  useEffect(()=>{
+    (async ()=>load())()
+  },[])
+    
+    const onlineStatus = (onlineData) => {
+      setData(onlineData);
+    }
+  
 
   function Home({ navigation }) {
 
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={styles.paragraph}>{JSON.stringify(storeData, null, 2)}</Text>
+      <Button title="store" onPress={store} />
+      <Text>{'\n'}</Text>
+      <Text style={styles.paragraph}>Load contents of JSON</Text>
+      <Button title="load" onPress={load} />
+      <Text>{'\n'}</Text>
+
         <Button
           title="Chat 1"
           onPress={() => navigation.navigate('Chat1')}

@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Chat({onlineStatus, navigation}) {
+export default function Chat({onlineStatus, navigation, name}) {
   const [messages, setMessages] = useState([]);
   const [nowOnlineStatus, setNowOnlineStatus] = useState('Online');
   
@@ -15,12 +15,12 @@ export default function Chat({onlineStatus, navigation}) {
   async function load() {
     var messageString = JSON.stringify(messages);
     if(messages.length != 0) {
-      await AsyncStorage.setItem('chat_1', messageString);
+      await AsyncStorage.setItem(name, messageString);
     }
   }
 
   async function checkMessageStorage() {
-    const oldMessage = await AsyncStorage.getItem('chat_1');
+    const oldMessage = await AsyncStorage.getItem(name);
     var oldMessageJson = JSON.parse(oldMessage);
     
     if(oldMessage != null) {
@@ -37,7 +37,7 @@ export default function Chat({onlineStatus, navigation}) {
   useEffect(() => {
 
     // check if async item
-    
+    console.log(name);
     var newMessage = [
       {
         _id: 1,

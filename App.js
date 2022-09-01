@@ -41,13 +41,13 @@ export default function App() {
   
   function Chat1({ navigation }) {
     return (
-      <Chat onlineStatus={onlineStatus} navigation={navigation}/>
+      <Chat onlineStatus={onlineStatus} navigation={navigation} name={"chat_1"}/>
     );
   }
   
   function Chat2({ navigation }) {
     return (
-      <Chat />
+      <Chat onlineStatus={onlineStatus} navigation={navigation} name={"chat_2"}/>
     );
   }
   

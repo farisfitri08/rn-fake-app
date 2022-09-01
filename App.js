@@ -12,6 +12,14 @@ export default function App() {
   const onlineStatus = (onlineData) => {
     setData(onlineData);
   }
+  
+  useEffect(()=>{
+    (async ()=>clearLocalStorage())()
+  },[])
+
+  async function clearLocalStorage() {
+      await AsyncStorage.clear();
+  }
 
   function Home({ navigation }) {
 
@@ -110,12 +118,12 @@ export default function App() {
         <Stack.Screen
           name="Chat1"
           component={Chat1}
-          options={{ headerStyleInterpolator: forFade, headerTitleAlign: 'center', headerTitle: (props) => <LogoTitle {...props} />,}}
+          options={{ headerStyleInterpolator: forFade, headerTitleAlign: 'center' }}
         />
         <Stack.Screen
           name="Chat2"
           component={Chat2}
-          options={{ headerStyleInterpolator: forFade }}
+          options={{ headerStyleInterpolator: forFade, headerTitleAlign: 'center' }}
         />
       </Stack.Navigator>
     );

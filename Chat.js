@@ -125,7 +125,7 @@ export default function Chat({onlineStatus, navigation, name}) {
       setMessages(previousMessages => GiftedChat.append(previousMessages, autoMessage))
 
       load(autoMessage);
-    }, 3);
+    }, 3000);
 
   }, []);
   

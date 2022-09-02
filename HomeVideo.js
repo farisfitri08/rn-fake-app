@@ -15,7 +15,6 @@ export default function App() {
   const Stack = createStackNavigator();
   const video = useRef(null);
   const [status, setStatus] = useState({});
-  const ronaldo_1 =  require('./video/ronaldo_1.mp4');
   const [sound, setSound] = useState(null);
   const [videoSourceClick, setVideoSourceClick] = useState(null);
 

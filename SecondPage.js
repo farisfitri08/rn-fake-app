@@ -34,5 +34,5 @@ function SecondPage() {
       </Tab.Navigator>
   );
 }
-
+  
 export default SecondPage;

@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faVideo } from '@fortawesome/free-solid-svg-icons/faVideo';
+import { faMessage } from '@fortawesome/free-solid-svg-icons/faMessage';
 
 function ContactsTab({navigation}) {
   return (
     <View style={styles.container}>
         <View style={styles.row}>
-          <View style={{width: "20%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
+          <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
           <Image
                 style={{ width: 50, height: 50, borderRadius: "50%" }}
                 source={{
@@ -13,16 +16,19 @@ function ContactsTab({navigation}) {
                 }}
               />
           </View>
-          <View style={{width: "50%"}}>
-          <Text style={{fontSize: 14}}>C.Ronaldo 1</Text>
-          <Text style={{color: 'gray', fontSize: 10}}>+621203934812736</Text>
+          <View style={{width: "40%"}}>
+          <Text style={{fontSize: 14, paddingBottom: "10px"}}>C.Ronaldo 1</Text>
+          <Text style={{color: 'gray', fontSize: 11}}>+44 7911 123456</Text>
           </View>
-          <View style={{width: "30%"}}>
-          <FontAwesomeIcon icon="fa-solid fa-video" />
+          <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "right", justifyContent: "right", padding: "20px"}}>
+          <FontAwesomeIcon icon={ faVideo } size={40}/>
+          </View>
+          <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "left", justifyContent: "left", padding: "20px"}}>
+          <FontAwesomeIcon icon={ faMessage } size={30}/>
           </View>
         </View>
         <View style={styles.row}>
-          <View style={{width: "20%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
+          <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
           <Image
                 style={{ width: 50, height: 50, borderRadius: "50%" }}
                 source={{
@@ -30,16 +36,19 @@ function ContactsTab({navigation}) {
                 }}
               />
           </View>
-          <View style={{width: "50%"}}>
-          <Text style={{fontSize: 14}}>C.Ronaldo 2</Text>
-          <Text style={{color: 'gray', fontSize: 10}}>+621203934812736</Text>
+          <View style={{width: "40%"}}>
+          <Text style={{fontSize: 14, paddingBottom: "10px"}}>C.Ronaldo 2</Text>
+          <Text style={{color: 'gray', fontSize: 11}}>+44 8221 987654</Text>
           </View>
-          <View style={{width: "30%"}}>
-          <FontAwesomeIcon icon="fa-solid fa-video" />
+          <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "right", justifyContent: "right", padding: "20px"}}>
+          <FontAwesomeIcon icon={ faVideo } size={40}/>
+          </View>
+          <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "left", justifyContent: "left", padding: "20px"}}>
+          <FontAwesomeIcon icon={ faMessage } size={30}/>
           </View>
         </View>
         <View style={styles.row}>
-          <View style={{width: "20%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
+          <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
           <Image
                 style={{ width: 50, height: 50, borderRadius: "50%" }}
                 source={{
@@ -47,16 +56,19 @@ function ContactsTab({navigation}) {
                 }}
               />
           </View>
-          <View style={{width: "50%"}}>
-          <Text style={{fontSize: 14}}>C.Ronaldo 3</Text>
-          <Text style={{color: 'gray', fontSize: 10}}>+621203934812736</Text>
+          <View style={{width: "40%"}}>
+          <Text style={{fontSize: 14, paddingBottom: "10px"}}>C.Ronaldo 3</Text>
+          <Text style={{color: 'gray', fontSize: 11}}>+44 7610 112233</Text>
           </View>
-          <View style={{width: "30%"}}>
-          <FontAwesomeIcon icon="fa-solid fa-video" />
+          <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "right", justifyContent: "right", padding: "20px"}}>
+          <FontAwesomeIcon icon={ faVideo } size={40}/>
+          </View>
+          <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "left", justifyContent: "left", padding: "20px"}}>
+          <FontAwesomeIcon icon={ faMessage } size={30}/>
           </View>
         </View>
         <View style={styles.row}>
-          <View style={{width: "20%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
+          <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
           <Image
                 style={{ width: 50, height: 50, borderRadius: "50%" }}
                 source={{
@@ -64,12 +76,15 @@ function ContactsTab({navigation}) {
                 }}
               />
           </View>
-          <View style={{width: "50%"}}>
-          <Text style={{fontSize: 14}}>C.Ronaldo 4</Text>
-          <Text style={{color: 'gray', fontSize: 10}}>+621203934812736</Text>
+          <View style={{width: "40%"}}>
+          <Text style={{fontSize: 14, paddingBottom: "10px"}}>C.Ronaldo 4</Text>
+          <Text style={{color: 'gray', fontSize: 11}}>+44 9411 671236</Text>
           </View>
-          <View style={{width: "30%"}}>
-          <FontAwesomeIcon icon="fa-solid fa-video" />
+          <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "right", justifyContent: "right", padding: "20px"}}>
+          <FontAwesomeIcon icon={ faVideo } size={40}/>
+          </View>
+          <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "left", justifyContent: "left", padding: "20px"}}>
+          <FontAwesomeIcon icon={ faMessage } size={30}/>
           </View>
         </View>
     </View>
@@ -81,11 +96,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexWrap: "wrap",
   },
-  column: {
-    display: 'flex',
-    flexDirection: "column",
-    alignItems: "center",
-  },
   row: {
     display: 'flex',
     flexDirection: "row",
@@ -93,15 +103,6 @@ const styles = StyleSheet.create({
     height: "100px",
     width: "100%",
     backgroundColor: "white",
-    alignItems: "center",
-  },
-  box: {
-    flexGrow: 1, 
-    width: "calc(33% - 2px)", 
-    margin: "2px",
-    height: "100px", 
-    backgroundColor: "white",
-    justifyContent: "center",
     alignItems: "center",
   }
 });

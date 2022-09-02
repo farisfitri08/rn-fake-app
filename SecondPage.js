@@ -9,23 +9,23 @@ const Tab = createMaterialTopTabNavigator();
 
 function ListProfileScreen({ navigation }) {
     return (
-      <ProfileTab />
+      <ProfileTab navigation={navigation}/>
   );
 }
 
 function ContactsScreen({ navigation }) {
     return (
-      <ContactsTab />
+      <ContactsTab navigation={navigation}/>
   );
 }
 
 function ChatsScreen({ navigation }) {
     return (
-      <ChatsTab />
+      <ChatsTab navigation={navigation}/>
   );
 }
 
-function SecondPage() {
+function SecondPage({navigation}) {
   return (
     <Tab.Navigator>
           <Tab.Screen name="Profile" component={ListProfileScreen} />

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Button, View, Text } from 'react-native';
+import { Button, View, Text, Alert } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomePage from './HomePage.js';
@@ -41,6 +41,7 @@ function VideoCallScreen({navigation}) {
 }
 
 function CameraCallScreen({route, navigation, permission }) {
+  Alert.alert(permission);
   return (
     <CameraCall navigation={navigation} cameraCallName={route.params.cameraCallName} permission={permission}/>
   );

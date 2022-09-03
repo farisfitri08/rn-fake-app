@@ -2,11 +2,10 @@ import * as React from 'react';
 import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomePage from './HomePage.js';
+import HomePage from './Homepage.js';
 import SecondPage from './SecondPage.js';
 import AboutPage from './AboutPage.js';
 import Chat from './Chat.js';
-
 // import CameraCall from './CameraCall.js';
 // import { Camera, CameraType } from 'expo-camera';
 

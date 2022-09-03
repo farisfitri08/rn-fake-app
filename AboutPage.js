@@ -9,15 +9,22 @@ function AboutPage({pictureName, navigation}) {
         navigation.setOptions({ headerRight: (props) => <AboutPageTitle pictureName={pictureName} navigation={navigation}/> });
     }, []);
 
+    let pictureReference = {
+        cr_1:require('./picture/cr_1.jpg'),
+        cr_2:require('./picture/cr_2.jpg'),
+        cr_3:require('./picture/cr_3.jpg'),
+        cr_4:require('./picture/cr_4.jpg')
+    }
+
+    let pictureUrl = pictureReference[pictureName];
+
     return (
         <View style={styles.container}>
             <View style={styles.box}>
             <Image
-                style={{ width: "100%", height: "100%", borderRadius: "25px" }}
+                style={{ width: "100%", height: "100%", borderRadius: 25 }}
                 resizeMode="contain"
-                source={{
-                uri: require(`./picture/${pictureName}.jpg`),
-                }}
+                source={pictureUrl}
             />
             </View>
         </View>
@@ -33,12 +40,12 @@ function AboutPageTitle({pictureName, navigation}) {
     return (
         <View style={{display: 'flex', flexDirection: "row"}}>
             <TouchableOpacity>
-            <View style={{alignItems: "right", justifyContent: "right", padding: "20px"}}>
+            <View style={{alignItems: "flex-end", justifyContent: "flex-end"}}>
             <FontAwesomeIcon icon={ faVideo } size={40}/>
             </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_"+noPicture })}>
-            <View style={{alignItems: "left", justifyContent: "left", paddingTop: "25px", paddingBottom: "10px", paddingLeft: "20px", paddingRight: "20px"}}>
+            <View style={{alignItems: "flex-start", justifyContent: "flex-start", paddingLeft: 20, paddingTop: 6}}>
             <FontAwesomeIcon icon={ faMessage } size={30}/>
             </View>
             </TouchableOpacity>
@@ -51,47 +58,18 @@ const styles = StyleSheet.create({
     container: {
       display: "flex",
       flexWrap: "wrap",
-      gap: "25",
       flexDirection: "row",
-      height: "100%",
+      flex: 1,
     },
     box: {
       flexGrow: 1, 
-      width: "calc(33% - 2px)", 
-      margin: "10px",
+      width: "32%", 
+      margin: 10,
       backgroundColor: "white",
       justifyContent: "center",
       alignItems: "center",
-      borderRadius: "25px",
-    },
-    header: {
-        MsFlexAlign: "center",
-        MsFlexPack: "center",
-        color: "rgba(255, 255, 255, 0.5)",
-        MozAlignItems: "center",
-        WebkitAlignItems: "center",
-        MsAlignItems: "center",
-        alignItems: "center",
-        display: "-moz-flex",
-        display: "-webkit-flex",
-        display: "-ms-flex",
-        display: "flex",
-        MozJustifyContent: "center",
-        WebkitJustifyContent: "center",
-        MsJustifyContent: "center",
-        justifyContent: "center",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        borderTop: "0",
-        display: "-ms-flexbox",
-        overflow: "hidden",
-        position: "relative",
-        textAlign: "center",
-        paddingBottom: "0px",
-        width: "100%",
-        height: "400px",
-      }
+      borderRadius: 25,
+    }
   });
 
 export default AboutPage;

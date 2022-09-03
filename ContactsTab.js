@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faVideo } from '@fortawesome/free-solid-svg-icons/faVideo';
 import { faMessage } from '@fortawesome/free-solid-svg-icons/faMessage';
@@ -23,9 +23,11 @@ function ContactsTab({navigation}) {
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "right", justifyContent: "right", padding: "20px"}}>
           <FontAwesomeIcon icon={ faVideo } size={40}/>
           </View>
+          <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_1" })}>
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "left", justifyContent: "left", padding: "20px"}}>
           <FontAwesomeIcon icon={ faMessage } size={30}/>
           </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.row}>
           <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
@@ -43,9 +45,11 @@ function ContactsTab({navigation}) {
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "right", justifyContent: "right", padding: "20px"}}>
           <FontAwesomeIcon icon={ faVideo } size={40}/>
           </View>
+          <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_2" })}>
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "left", justifyContent: "left", padding: "20px"}}>
           <FontAwesomeIcon icon={ faMessage } size={30}/>
           </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.row}>
           <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
@@ -63,9 +67,11 @@ function ContactsTab({navigation}) {
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "right", justifyContent: "right", padding: "20px"}}>
           <FontAwesomeIcon icon={ faVideo } size={40}/>
           </View>
+          <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_3" })}>
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "left", justifyContent: "left", padding: "20px"}}>
           <FontAwesomeIcon icon={ faMessage } size={30}/>
           </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.row}>
           <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
@@ -83,9 +89,11 @@ function ContactsTab({navigation}) {
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "right", justifyContent: "right", padding: "20px"}}>
           <FontAwesomeIcon icon={ faVideo } size={40}/>
           </View>
+          <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_4" })}>
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "left", justifyContent: "left", padding: "20px"}}>
           <FontAwesomeIcon icon={ faMessage } size={30}/>
           </View>
+          </TouchableOpacity>
         </View>
     </View>
   );

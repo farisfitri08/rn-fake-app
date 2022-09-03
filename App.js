@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomePage from './Homepage.js';
 import SecondPage from './SecondPage.js';
 import AboutPage from './AboutPage.js';
+import Chat from './Chat.js';
 
 function HomeScreen({ navigation }) {
   return (
@@ -24,6 +25,12 @@ function AboutScreen({route, navigation}) {
   );
 }
 
+function ChatScreen({route, navigation }) {
+  return (
+    <Chat navigation={navigation} name={route.params.chatName}/>
+  );
+}
+
 const Stack = createNativeStackNavigator();
 
 function App() {
@@ -33,6 +40,7 @@ function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Menu" component={MenuScreen} />
         <Stack.Screen name="About" component={AboutScreen} />
+        <Stack.Screen name="Chat" component={ChatScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

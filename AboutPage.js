@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faVideo } from '@fortawesome/free-solid-svg-icons/faVideo';
 import { faMessage } from '@fortawesome/free-solid-svg-icons/faMessage';
 
 function AboutPage({pictureName, navigation}) {
     useEffect(() => {
-        navigation.setOptions({ headerRight: (props) => <AboutPageTitle {...props} /> });
+        navigation.setOptions({ headerRight: (props) => <AboutPageTitle pictureName={pictureName} navigation={navigation}/> });
     }, []);
 
     return (
@@ -24,16 +24,24 @@ function AboutPage({pictureName, navigation}) {
     );
 }
 
-function AboutPageTitle(e) {
+function AboutPageTitle({pictureName, navigation}) {
+    const pictureNameString = pictureName.split("_");
+    let noPicture = pictureNameString[1];
+    if(!noPicture) noPicture = 1;
+    let chatName = "chat_"+noPicture;
 
     return (
         <View style={{display: 'flex', flexDirection: "row"}}>
+            <TouchableOpacity>
             <View style={{alignItems: "right", justifyContent: "right", padding: "20px"}}>
             <FontAwesomeIcon icon={ faVideo } size={40}/>
             </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: chatName })}>
             <View style={{alignItems: "left", justifyContent: "left", paddingTop: "25px", paddingBottom: "10px", paddingLeft: "20px", paddingRight: "20px"}}>
             <FontAwesomeIcon icon={ faMessage } size={30}/>
             </View>
+            </TouchableOpacity>
         </View>
         
     );

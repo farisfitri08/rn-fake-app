@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 function ChatsTab({navigation}) {
   return (
     <View style={styles.container}>
+        <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_1" })}>
         <View style={styles.row}>
           <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
           <Image
@@ -18,6 +19,8 @@ function ChatsTab({navigation}) {
           <Text style={{color: 'gray', fontSize: 11}}>Message</Text>
           </View>
         </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_2" })}>
         <View style={styles.row}>
           <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
           <Image
@@ -32,6 +35,8 @@ function ChatsTab({navigation}) {
           <Text style={{color: 'gray', fontSize: 11}}>Message</Text>
           </View>
         </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_3" })}>
         <View style={styles.row}>
           <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
           <Image
@@ -46,6 +51,8 @@ function ChatsTab({navigation}) {
           <Text style={{color: 'gray', fontSize: 11}}>Message</Text>
           </View>
         </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_4" })}>
         <View style={styles.row}>
           <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
           <Image
@@ -60,6 +67,7 @@ function ChatsTab({navigation}) {
           <Text style={{color: 'gray', fontSize: 11}}>Message</Text>
           </View>
         </View>
+        </TouchableOpacity>
     </View>
   );
 }

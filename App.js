@@ -41,7 +41,8 @@ function VideoCallScreen({navigation}) {
 }
 
 function CameraCallScreen({route, navigation, permission }) {
-  Alert.alert(permission);
+  Alert.alert("testing camera");
+  
   return (
     <CameraCall navigation={navigation} cameraCallName={route.params.cameraCallName} permission={permission}/>
   );
@@ -62,7 +63,10 @@ function App() {
         <Stack.Screen name="About" component={AboutScreen} />
         <Stack.Screen name="Chat" component={ChatScreen} />
         <Stack.Screen name="VideoCall" component={VideoCallScreen} />
-        <Stack.Screen name="CameraCall" component={CameraCallScreen} options={{headerShown: false}} permission={permission}/>
+        {/* <Stack.Screen name="CameraCall" component={CameraCallScreen} options={{headerShown: false}} permission={permission}/> */}
+        <Stack.Screen name='CameraCall' options={{headerShown: false}}>
+          {(props) => <CameraCallScreen {...props} permission={permission} />}
+        </Stack.Screen>      
       </Stack.Navigator>
     </NavigationContainer>
   );

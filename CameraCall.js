@@ -1,10 +1,11 @@
-import * as React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 
-function CameraCall({cameraCallName, navigation, permission}) {
+function CameraCall({navigation, cameraCallName, permission}) {
     const [type, setType] = useState(CameraType.front);
-
+    Alert.alert(permission);
+    Alert.alert(cameraCallName);
     return (
     <View style={styles.container}>
         {permission ? (
@@ -12,7 +13,7 @@ function CameraCall({cameraCallName, navigation, permission}) {
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
                 style={styles.button}
-                onPress={toggleCameraType}>
+                onPress={toggleCameraType(cameraCallName)}>
                 <Text style={styles.text}>Connect </Text>
                 </TouchableOpacity>
             </View>
@@ -21,12 +22,8 @@ function CameraCall({cameraCallName, navigation, permission}) {
     );
 }
 
-function toggleCameraType() {
-    Myvideoksk();
-}
-
-function Myvideoksk() {
-    console.log("video");
+function toggleCameraType(cameraCallName) {
+    Alert.alert(cameraCallName);
 }
 
 const styles = StyleSheet.create({

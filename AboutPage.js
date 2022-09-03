@@ -37,7 +37,7 @@ function AboutPageTitle({pictureName, navigation}) {
             <FontAwesomeIcon icon={ faVideo } size={40}/>
             </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: chatName })}>
+            <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_"+noPicture })}>
             <View style={{alignItems: "left", justifyContent: "left", paddingTop: "25px", paddingBottom: "10px", paddingLeft: "20px", paddingRight: "20px"}}>
             <FontAwesomeIcon icon={ faMessage } size={30}/>
             </View>

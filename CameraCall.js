@@ -36,8 +36,8 @@ function CameraCall({navigation, cameraCallName, permission}) {
         {permission ? (
         <Camera style={styles.camera} type={type}>
             <View style={styles.buttonContainer}>
-              <View style={{display: "flex", flexDirection: 'row', flexGrow: 1, width: "50%"}}>
-                <TouchableOpacity style={styles.button} onPress={() => {
+            <View style={styles.box}>
+                <TouchableOpacity onPress={() => {
                     if(sound) {
                       sound.stopAsync();
                       sound.unloadAsync();
@@ -52,8 +52,8 @@ function CameraCall({navigation, cameraCallName, permission}) {
                     />
                 </TouchableOpacity>
               </View>
-              <View style={{display: "flex", flexDirection: 'row', flexGrow: 1, width: "50%"}}>
-                <TouchableOpacity style={styles.button} onPress={() => {
+              <View style={styles.box}>
+                <TouchableOpacity onPress={() => {
                       if(sound) {
                         sound.stopAsync();
                         sound.unloadAsync();
@@ -98,10 +98,11 @@ const styles = StyleSheet.create({
       flex: 1,
     },
     buttonContainer: {
-      flex: 1,
-      flexDirection: 'row',
-      backgroundColor: 'transparent',
-      margin: 64,
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row",
+      marginTop: "auto",
+      width: "100%",
     },
     button: {
       flex: 1,
@@ -112,7 +113,15 @@ const styles = StyleSheet.create({
       fontSize: 24,
       fontWeight: 'bold',
       color: 'white',
-    }
+    },
+    box: {
+      flexGrow: 1, 
+      width: "48%", 
+      margin: 2,
+      height: 100, 
+      justifyContent: "center",
+      alignItems: "center",
+    },
 });
 
 export default CameraCall;

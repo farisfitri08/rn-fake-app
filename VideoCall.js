@@ -16,8 +16,7 @@ function VideoCall({navigation, name}) {
     }
 
     useEffect(() => {
-      Alert.alert(name);
-      let item_video = name;
+      let item_video = "ronaldo_1";
 
       let videoRef = videoReference[item_video];
 
@@ -36,6 +35,10 @@ function VideoCall({navigation, name}) {
         shouldPlay
         onPlaybackStatusUpdate={status => setStatus(() => status)}
       />
+      <View style={{display: "flex", flexWrap: "wrap", flexDirection: "row", height: "100%", width: "100%"}}>
+        <View style={styles.box_beside_camera}></View>
+        <Camera style={styles.box_camera} type={CameraType.front}></Camera>
+        </View>
       <View style={styles.buttonContainer}>
       <View style={styles.box}>
           <Image
@@ -58,7 +61,7 @@ function VideoCall({navigation, name}) {
           />
       </View>
       </View>
-      <Camera style={styles.selfieCameraOnVideo} type={CameraType.front}></Camera>
+      
     </View>
     );
 }
@@ -114,6 +117,22 @@ const styles = StyleSheet.create({
     width: "32%", 
     margin: 2,
     height: 100, 
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  box_beside_camera: {
+    flexGrow: 1, 
+    width: "75%", 
+    height: "20%", 
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white"
+  },
+  box_camera: {
+    flexGrow: 1, 
+    width: "21%", 
+    margin: 4,
+    height: "20%",
     justifyContent: "center",
     alignItems: "center",
   }

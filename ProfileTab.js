@@ -75,8 +75,7 @@ const styles = StyleSheet.create({
     flexGrow: 1, 
     width: "32%", 
     margin: 2,
-    height: 100, 
-    backgroundColor: "white",
+    height: 130, 
     justifyContent: "center",
     alignItems: "center",
   }

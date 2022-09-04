@@ -126,7 +126,6 @@ const styles = StyleSheet.create({
     height: "20%", 
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white"
   },
   box_camera: {
     flexGrow: 1, 

@@ -32,6 +32,8 @@ function SecondPage({navigation}) {
       tabBarIndicatorStyle: {
         backgroundColor: '#077FFF',
       },
+      tabBarItemStyle: { borderBottomColor: '#D9D9DA',
+      borderBottomWidth: 1, },
     }}>
           <Tab.Screen name="Profile" component={ListProfileScreen} />
           <Tab.Screen name="Contacts" component={ContactsScreen} />

@@ -16,7 +16,8 @@ function VideoCall({navigation, name}) {
     }
 
     useEffect(() => {
-      let item_video = "ronaldo_1";
+      Alert.alert(name);
+      let item_video = name;
 
       let videoRef = videoReference[item_video];
 

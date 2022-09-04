@@ -19,7 +19,7 @@ function ContactsTab({navigation}) {
           <Text style={{color: 'gray', fontSize: 11}}>+44 7911 123456</Text>
           </View>
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "flex-end", justifyContent: "flex-end", padding: 10}}>
-          <TouchableOpacity onPress={() => navigation.navigate('CameraCall', { cameraCallName: "cameraCall_1" })}>
+          <TouchableOpacity onPress={() => navigation.navigate('CameraCall', { cameraCallName: "ronaldo_1" })}>
           <FontAwesomeIcon icon={ faVideo } size={40}/>
           </TouchableOpacity>
           </View>
@@ -41,7 +41,7 @@ function ContactsTab({navigation}) {
           <Text style={{color: 'gray', fontSize: 11}}>+44 8221 987654</Text>
           </View>
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "flex-end", justifyContent: "flex-end", padding: 10}}>
-          <TouchableOpacity onPress={() => navigation.navigate('CameraCall', { cameraCallName: "cameraCall_2" })}>
+          <TouchableOpacity onPress={() => navigation.navigate('CameraCall', { cameraCallName: "ronaldo_2" })}>
           <FontAwesomeIcon icon={ faVideo } size={40}/>
           </TouchableOpacity>
           </View>
@@ -63,7 +63,7 @@ function ContactsTab({navigation}) {
           <Text style={{color: 'gray', fontSize: 11}}>+44 7610 112233</Text>
           </View>
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "flex-end", justifyContent: "flex-end", padding: 10}}>
-          <TouchableOpacity onPress={() => navigation.navigate('CameraCall', { cameraCallName: "cameraCall_3" })}>
+          <TouchableOpacity onPress={() => navigation.navigate('CameraCall', { cameraCallName: "ronaldo_3" })}>
           <FontAwesomeIcon icon={ faVideo } size={40}/>
           </TouchableOpacity>
           </View>
@@ -85,7 +85,7 @@ function ContactsTab({navigation}) {
           <Text style={{color: 'gray', fontSize: 11}}>+44 9411 671236</Text>
           </View>
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "flex-end", justifyContent: "flex-end", padding: 10}}>
-          <TouchableOpacity onPress={() => navigation.navigate('CameraCall', { cameraCallName: "cameraCall_4" })}>
+          <TouchableOpacity onPress={() => navigation.navigate('CameraCall', { cameraCallName: "ronaldo_4" })}>
           <FontAwesomeIcon icon={ faVideo } size={40}/>
           </TouchableOpacity>
           </View>

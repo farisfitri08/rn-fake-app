@@ -6,42 +6,29 @@ import { Video, AVPlaybackStatus, Audio } from 'expo-av';
 function CameraCall({navigation, cameraCallName, permission}) {
     const [type, setType] = useState(CameraType.front);
     const [sound, setSound] = useState(null);
-    const [test, setTest] = useState(null);
-    const [loading, setLoading] = useState(false)
-
     
     useEffect(() => {
       sound ? () => { sound.unloadAsync(); }  : undefined;
 
       playSound().then(playRingTone => {
         setSound(playRingTone);
-      });      
-      
+      });
     }, []);
 
     useEffect(() => {
-      function mockLoading () {
-         setLoading("loading")
-         Alert.alert(loading);
-         setTimeout(() => {
-         setLoading("aasdksdkl")
-         Alert.alert(loading);
-       }, 3000)
-  }
-    mockLoading()
-  }, []);
-    
-    useEffect(() => {
-      Alert.alert(test);
       const backAction = () => {
-
-        return false;
+        if(sound) {
+          sound.stopAsync();
+          sound.unloadAsync();
+        }
+        navigation.navigate('Menu')
+        return true;
       };
   
       const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
   
       return () => backHandler.remove();
-    }, []);
+    }, [sound]);
     
     return (
     <View style={styles.container}>

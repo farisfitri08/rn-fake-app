@@ -39,7 +39,7 @@ function AboutPageTitle({pictureName, navigation}) {
 
     return (
         <View style={{display: 'flex', flexDirection: "row"}}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('CameraCall', { cameraCallName: "ronaldo_"+noPicture })}>
             <View style={{alignItems: "flex-end", justifyContent: "flex-end"}}>
             <FontAwesomeIcon icon={ faVideo } size={40}/>
             </View>

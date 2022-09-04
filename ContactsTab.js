@@ -103,15 +103,16 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexWrap: "wrap",
+    width: "100%",
   },
   row: {
     display: 'flex',
     flexDirection: "row",
-    margin: 2,
     height: 100,
-    width: "100%",
     backgroundColor: "white",
     alignItems: "center",
+    borderBottomColor: '#D9D9DA',
+    borderBottomWidth: 1,
   }
 });
 

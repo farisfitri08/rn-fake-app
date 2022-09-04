@@ -51,16 +51,23 @@ const Stack = createNativeStackNavigator();
 
 function App() {
   const [permission, requestPermission] = Camera.useCameraPermissions();
-  
+
+  const MyTheme = {
+    colors: {
+      backgroundColor: 'rgb(255, 255, 255)',
+      color: 'rgb(0,0,0)'
+    },
+  };
+
   useEffect(()=>{requestPermission()},[]);
   
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Menu" component={MenuScreen} />
-        <Stack.Screen name="About" component={AboutScreen} />
-        <Stack.Screen name="Chat" component={ChatScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{headerStyle: {backgroundColor: '#FFFFFF'}}}/>
+        <Stack.Screen name="Menu" component={MenuScreen} options={{headerStyle: {backgroundColor: '#FFFFFF'}}}/>
+        <Stack.Screen name="About" component={AboutScreen} options={{headerStyle: {backgroundColor: '#FFFFFF'}}}/>
+        <Stack.Screen name="Chat" component={ChatScreen} options={{headerStyle: {backgroundColor: '#FFFFFF'}}}/>
         <Stack.Screen name='CameraCall' options={{headerShown: false}}>
           {(props) => <CameraCallScreen {...props} permission={permission} />}
         </Stack.Screen>

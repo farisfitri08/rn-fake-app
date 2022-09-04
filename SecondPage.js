@@ -27,7 +27,12 @@ function ChatsScreen({ navigation }) {
 
 function SecondPage({navigation}) {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{
+      tabBarActiveTintColor: '#000000', 
+      tabBarIndicatorStyle: {
+        backgroundColor: '#077FFF',
+      },
+    }}>
           <Tab.Screen name="Profile" component={ListProfileScreen} />
           <Tab.Screen name="Contacts" component={ContactsScreen} />
           <Tab.Screen name="Chats" component={ChatsScreen} />

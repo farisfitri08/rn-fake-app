@@ -70,24 +70,26 @@ export default function Chat({navigation, name}) {
       }
 
       setNowOnlineStatus(nowOnlineStatus);
-      navigation.setOptions({ headerTitle: (props) => <LogoTitle {...props} /> });
+      navigation.setOptions({ headerTitle: (props) => <LogoTitle {...props} name={name}/> });
       (async ()=>load())()
     }
      
   }, [messages]);
 
-  function LogoTitle(e) {
+  function LogoTitle(e, name) {
+    const pictureNameString = name.split("_");
+    let noPicture = pictureNameString[1];
+    if(!noPicture) noPicture = 1;
+    let pictureName = "cr_"+noPicture;
 
     return (
       <View style={styles.box}>
             <View><Image
               style={{ width: 50, height: 50 }}
-              source={{
-                uri: 'https://crop-circle.imageonline.co/image.png',
-              }}
+              source={require('./picture/cr_1.jpg')}
             /></View>
             <View style={{display: 'flex', flexDirection: "column", justifyContent: "center"}}>
-              <Text style={{paddingLeft: 10, fontWeight: 'bold', fontSize: 15}}>Cristiano Ronaldo</Text>
+              <Text style={{paddingLeft: 10, fontWeight: 'bold', fontSize: 15}}>Cristiano Ronaldo {noPicture}</Text>
               <Text style={{paddingLeft: 10, color: 'gray', fontSize: 11}}>{nowOnlineStatus}</Text>
             </View>
           </View>

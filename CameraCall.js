@@ -20,6 +20,7 @@ function CameraCall({navigation, cameraCallName, permission}) {
         if(sound) {
           sound.stopAsync();
           sound.unloadAsync();
+          setSound(null);
         }
         navigation.navigate('Menu')
         return true;
@@ -40,6 +41,7 @@ function CameraCall({navigation, cameraCallName, permission}) {
                     if(sound) {
                       sound.stopAsync();
                       sound.unloadAsync();
+                      setSound(null);
                     }
                     navigation.navigate('Menu')
                   }
@@ -55,6 +57,7 @@ function CameraCall({navigation, cameraCallName, permission}) {
                       if(sound) {
                         sound.stopAsync();
                         sound.unloadAsync();
+                        setSound(null);
                       }
                       navigation.navigate('VideoCall', { videoCallName: cameraCallName })
                     }

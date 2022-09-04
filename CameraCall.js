@@ -1,21 +1,47 @@
 import { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button, BackHandler } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import { Video, AVPlaybackStatus, Audio } from 'expo-av';
 
 function CameraCall({navigation, cameraCallName, permission}) {
     const [type, setType] = useState(CameraType.front);
     const [sound, setSound] = useState(null);
+    const [test, setTest] = useState(null);
+    const [loading, setLoading] = useState(false)
+
     
     useEffect(() => {
       sound ? () => { sound.unloadAsync(); }  : undefined;
 
-      playSound().then(playRingTone => {  
+      playSound().then(playRingTone => {
         setSound(playRingTone);
-      });
+      });      
       
     }, []);
+
+    useEffect(() => {
+      function mockLoading () {
+         setLoading("loading")
+         Alert.alert(loading);
+         setTimeout(() => {
+         setLoading("aasdksdkl")
+         Alert.alert(loading);
+       }, 3000)
+  }
+    mockLoading()
+  }, []);
     
+    useEffect(() => {
+      Alert.alert(test);
+      const backAction = () => {
+
+        return false;
+      };
+  
+      const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
+  
+      return () => backHandler.remove();
+    }, []);
     
     return (
     <View style={styles.container}>
@@ -38,7 +64,14 @@ function CameraCall({navigation, cameraCallName, permission}) {
                 </TouchableOpacity>
               </View>
               <View style={{display: "flex", flexDirection: 'row', flexGrow: 1, width: "50%"}}>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Menu')}>
+                <TouchableOpacity style={styles.button} onPress={() => {
+                      if(sound) {
+                        sound.stopAsync();
+                        sound.unloadAsync();
+                      }
+                      navigation.navigate('VideoCall', { videoCallName: cameraCallName })
+                    }
+                  }>
                   <Image
                       style={{ width: 50, height: 50, borderRadius: 50 }}
                       source={require('./picture/accept_video_button.png')}
@@ -51,10 +84,6 @@ function CameraCall({navigation, cameraCallName, permission}) {
     );
 }
 
-function toggleCameraType() {
-    Alert.alert("toggleCamera");
-}
-
 async function playSound() {
   const { sound } = await Audio.Sound.createAsync(
     require('./ringtone/ringtone_whatsapp_video_call.mp3')
@@ -64,6 +93,10 @@ async function playSound() {
   await sound.setIsLoopingAsync(true)
   return sound;
 
+}
+
+async function removeSoundCall() {
+  return sound;
 }
 
 const styles = StyleSheet.create({

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button, View, Text, Alert } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -8,6 +8,7 @@ import AboutPage from './AboutPage.js';
 import Chat from './Chat.js';
 
 import CameraCall from './CameraCall.js';
+import VideoCall from './VideoCall.js';
 import { Camera, CameraType } from 'expo-camera';
 
 function HomeScreen({ navigation }) {
@@ -34,17 +35,15 @@ function ChatScreen({route, navigation }) {
   );
 }
 
-function VideoCallScreen({navigation}) {
+function CameraCallScreen({route, navigation, permission }) {  
   return (
-    <VideoCall navigation={navigation}/>
+    <CameraCall navigation={navigation} cameraCallName={route.params.cameraCallName} permission={permission}/>
   );
 }
 
-function CameraCallScreen({route, navigation, permission }) {
-  Alert.alert("testing camera");
-  
+function VideoCallScreen({route, navigation}) {
   return (
-    <CameraCall navigation={navigation} cameraCallName={route.params.cameraCallName} permission={permission}/>
+    <VideoCall navigation={navigation} name={route.params.videoCallName}/>
   );
 }
 
@@ -52,9 +51,9 @@ const Stack = createNativeStackNavigator();
 
 function App() {
   const [permission, requestPermission] = Camera.useCameraPermissions();
-
+  
   useEffect(()=>{requestPermission()},[]);
-
+  
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
@@ -62,11 +61,10 @@ function App() {
         <Stack.Screen name="Menu" component={MenuScreen} />
         <Stack.Screen name="About" component={AboutScreen} />
         <Stack.Screen name="Chat" component={ChatScreen} />
-        <Stack.Screen name="VideoCall" component={VideoCallScreen} />
-        {/* <Stack.Screen name="CameraCall" component={CameraCallScreen} options={{headerShown: false}} permission={permission}/> */}
         <Stack.Screen name='CameraCall' options={{headerShown: false}}>
           {(props) => <CameraCallScreen {...props} permission={permission} />}
-        </Stack.Screen>      
+        </Stack.Screen>
+        <Stack.Screen name="VideoCall" options={{headerShown: false}} component={VideoCallScreen} />  
       </Stack.Navigator>
     </NavigationContainer>
   );

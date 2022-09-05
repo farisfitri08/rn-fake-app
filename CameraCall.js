@@ -43,7 +43,7 @@ function CameraCall({navigation, cameraCallName, permission}) {
                       sound.unloadAsync();
                       setSound(null);
                     }
-                    navigation.navigate('Menu')
+                    navigation.goBack()
                   }
                 }>
                   <Image

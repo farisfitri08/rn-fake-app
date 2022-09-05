@@ -4,6 +4,7 @@ import { GiftedChat } from 'react-native-gifted-chat';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import images from "./images";
 
 export default function Chat({navigation, name}) {
   const [messages, setMessages] = useState([]);
@@ -76,17 +77,18 @@ export default function Chat({navigation, name}) {
      
   }, [messages]);
 
-  function LogoTitle(e, name) {
+  function LogoTitle({e, name}) {
     const pictureNameString = name.split("_");
     let noPicture = pictureNameString[1];
     if(!noPicture) noPicture = 1;
-    let pictureName = "cr_"+noPicture;
+    let pictureName = "ronaldo_"+noPicture;
+    let pictureRef = images[pictureName];
 
     return (
       <View style={styles.box}>
             <View><Image
-              style={{ width: 50, height: 50 }}
-              source={require('./picture/cr_1.jpg')}
+              style={{ width: 50, height: 50, borderRadius: 50 }}
+              source={pictureRef}
             /></View>
             <View style={{display: 'flex', flexDirection: "column", justifyContent: "center"}}>
               <Text style={{paddingLeft: 10, fontWeight: 'bold', fontSize: 15}}>Cristiano Ronaldo {noPicture}</Text>

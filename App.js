@@ -10,6 +10,7 @@ import Chat from './Chat.js';
 import CameraCall from './CameraCall.js';
 import VideoCall from './VideoCall.js';
 import { Camera, CameraType } from 'expo-camera';
+import { HeaderBackButton } from '@react-navigation/elements';
 
 function HomeScreen({ navigation }) {
   return (
@@ -17,9 +18,10 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function MenuScreen() {
+function MenuScreen({ navigation, test }) {
+  Alert.alert("menu");
   return (
-    <SecondPage />
+    <SecondPage navigation={navigation}/>
   );
 }
 
@@ -67,7 +69,11 @@ function App() {
         <Stack.Screen name="Home" component={HomeScreen} options={{headerStyle: {backgroundColor: '#FFFFFF'}}}/>
         <Stack.Screen name="Menu" component={MenuScreen} options={{headerStyle: {backgroundColor: '#FFFFFF'}}}/>
         <Stack.Screen name="About" component={AboutScreen} options={{headerStyle: {backgroundColor: '#FFFFFF'}}}/>
-        <Stack.Screen name="Chat" component={ChatScreen} options={{headerStyle: {backgroundColor: '#FFFFFF'}}}/>
+        <Stack.Screen name="Chat" component={ChatScreen} options={({ navigation, route }) => ({headerStyle: {backgroundColor: '#FFFFFF'}, headerLeft: () => (
+            <HeaderBackButton
+              onPress={() => navigation.navigate('Menu')}
+            />
+          ),})} />
         <Stack.Screen name='CameraCall' options={{headerShown: false}}>
           {(props) => <CameraCallScreen {...props} permission={permission} />}
         </Stack.Screen>

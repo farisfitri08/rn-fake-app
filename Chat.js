@@ -75,7 +75,7 @@ export default function Chat({navigation, name}) {
       (async ()=>load())()
     }
      
-  }, [messages]);
+  }, [messages, name]);
 
   function LogoTitle({e, name}) {
     const pictureNameString = name.split("_");

@@ -1,7 +1,36 @@
-import * as React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React, { useState, useCallback, useEffect } from 'react'
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import images from "./images";
+function ChatsTab({navigation, lastMessages}) {
+//   const [lastMessages, setLastMessages] = useState({});
+//   var textChats = {
+//     chat_1: "",
+//     chat_2: "",
+//     chat_3: "",
+//     chat_4: ""
+//   };
 
-function ChatsTab({navigation}) {
+//   useEffect(() => {
+//     Alert.alert("test");
+//     async function callProduct() {
+
+//         for(const textChat in textChats) {
+//             const oldMessage = await AsyncStorage.getItem(textChat);
+            
+//             if(oldMessage != null) {
+//               var oldMessageJson = JSON.parse(oldMessage);
+//               textChats[textChat] = oldMessageJson[0].text;
+              
+//             }
+//         }
+
+//         setLastMessages(textChats);
+//     }
+    
+//     callProduct();
+// }, []);
+
   return (
     <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_1" })}>

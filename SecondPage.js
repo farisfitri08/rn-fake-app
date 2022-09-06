@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Button, View, Text } from 'react-native';
+import { Button, View, Text, Alert } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import ProfileTab from './ProfileTab.js';
 import ContactsTab from './ContactsTab.js';
@@ -30,32 +30,30 @@ function ChatsScreen({ navigation }) {
 }
 
 function SecondPage({navigation}) {
+  console.log("second page");
   const { name, age } = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
-  useEffect(() => {
-  dispatch(setAge(12));
-  }, []);
+  
   useEffect(() => {
     var newMessage = [{}];
 
-    checkMessageStorage().then(checkMessage => {
-      if(checkMessage != null) {
-        newMessage = checkMessage;
-        dispatch(setName(JSON.stringify(newMessage)));
-      }
-    });
+    const getAllStorageItem = allStorage();
+    dispatch(setName(getAllStorageItem));
+    
   }, [])
 
-  async function checkMessageStorage() {
-    const oldMessage = await AsyncStorage.getItem("chat_1");
-    var oldMessageJson = JSON.parse(oldMessage);
-    
-    if(oldMessage != null) {
-      return oldMessageJson;
+  function allStorage() {
+
+    var archive = {}, // Notice change here
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+    while ( i-- ) {
+        archive[ keys[i] ] = localStorage.getItem( keys[i] );
     }
-  
-    return null;
-  }
+
+    return archive;
+}
 
   return (
     <Tab.Navigator screenOptions={{

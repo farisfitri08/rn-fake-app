@@ -7,6 +7,7 @@ import ChatsTab from './ChatsTab.js';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { setName, setAge } from './redux/actions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -32,9 +33,30 @@ function SecondPage({navigation}) {
   const { name, age } = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
   useEffect(() => {
-  dispatch(setName("faris"));
   dispatch(setAge(12));
   }, []);
+  useEffect(() => {
+    var newMessage = [{}];
+
+    checkMessageStorage().then(checkMessage => {
+      if(checkMessage != null) {
+        newMessage = checkMessage;
+        dispatch(setName(JSON.stringify(newMessage)));
+      }
+    });
+  }, [])
+
+  async function checkMessageStorage() {
+    const oldMessage = await AsyncStorage.getItem("chat_1");
+    var oldMessageJson = JSON.parse(oldMessage);
+    
+    if(oldMessage != null) {
+      return oldMessageJson;
+    }
+  
+    return null;
+  }
+
   return (
     <Tab.Navigator screenOptions={{
       tabBarActiveTintColor: '#000000', 

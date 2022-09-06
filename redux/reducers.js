@@ -1,7 +1,7 @@
 import { SET_USER_NAME, SET_USER_AGE, INCREASE_AGE } from './actions';
 
 const initialState = {
-    name: '',
+    name: {},
     age: 0,
 }
 

@@ -55,7 +55,8 @@ const Stack = createNativeStackNavigator();
 
 function App() {
   const [permission, requestPermission] = Camera.useCameraPermissions();
-
+  const [lastMessages, setLastMessages] = useState({});
+  
   const MyTheme = {
     colors: {
       backgroundColor: 'rgb(255, 255, 255)',

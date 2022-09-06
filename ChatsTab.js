@@ -63,7 +63,7 @@ function ChatsTab({navigation, lastMessages}) {
           </View>
           <View style={{width: "70%"}}>
           <Text style={{fontSize: 14, paddingBottom: 10}}>C.Ronaldo 2</Text>
-          <Text style={{color: 'gray', fontSize: 11}}>Message</Text>
+          <Text style={{color: 'gray', fontSize: 11}}>Message : {name}</Text>
           </View>
         </View>
         </TouchableOpacity>

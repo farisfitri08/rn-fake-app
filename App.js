@@ -35,7 +35,7 @@ function AboutScreen({route, navigation}) {
 
 function ChatScreen({route, navigation }) {
   return (
-    <Chat navigation={navigation} name={route.params.chatName}/>
+    <Chat navigation={navigation} textName={route.params.chatName}/>
   );
 }
 
@@ -73,11 +73,7 @@ function App() {
         <Stack.Screen name="Home" component={HomeScreen} options={{headerStyle: {backgroundColor: '#FFFFFF'}}}/>
         <Stack.Screen name="Menu" component={MenuScreen} options={{headerStyle: {backgroundColor: '#FFFFFF'}}}/>
         <Stack.Screen name="About" component={AboutScreen} options={{headerStyle: {backgroundColor: '#FFFFFF'}}}/>
-        <Stack.Screen name="Chat" component={ChatScreen} options={({ navigation, route }) => ({headerStyle: {backgroundColor: '#FFFFFF'}, headerLeft: () => (
-            <HeaderBackButton
-              onPress={() => navigation.navigate('Menu')}
-            />
-          ),})} />
+        <Stack.Screen name="Chat" component={ChatScreen} options={{headerStyle: {backgroundColor: '#FFFFFF'}}}/>
         <Stack.Screen name='CameraCall' options={{headerShown: false}}>
           {(props) => <CameraCallScreen {...props} permission={permission} />}
         </Stack.Screen>

@@ -5,23 +5,34 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import images from "./images";
+import { useSelector, useDispatch } from 'react-redux';
+import { setName, setAge } from './redux/actions';
 
-export default function Chat({navigation, name}) {
+export default function Chat({navigation, textName}) {
   const [messages, setMessages] = useState([]);
   const [nowOnlineStatus, setNowOnlineStatus] = useState('Online');
-  
+  const { name, age } = useSelector(state => state.userReducer);
+  const dispatch = useDispatch();
 
   var autoMessages = require('./autoChat.json');
 
   async function load() {
     var messageString = JSON.stringify(messages);
     if(messages.length != 0) {
-      await AsyncStorage.setItem(name, messageString);
+      await AsyncStorage.setItem(textName, messageString);
+      var resultText = {};
+        messages.map((user, userKey) => {
+          if(userKey == 0)  {
+            name[textName] = user.text;
+          }
+        })
+        resultText = name;
+        dispatch(setName(resultText));
     }
   }
 
   async function checkMessageStorage() {
-    const oldMessage = await AsyncStorage.getItem(name);
+    const oldMessage = await AsyncStorage.getItem(textName);
     var oldMessageJson = JSON.parse(oldMessage);
     
     if(oldMessage != null) {
@@ -71,14 +82,14 @@ export default function Chat({navigation, name}) {
       }
 
       setNowOnlineStatus(nowOnlineStatus);
-      navigation.setOptions({ headerTitle: (props) => <LogoTitle {...props} name={name}/> });
+      navigation.setOptions({ headerTitle: (props) => <LogoTitle {...props} textName={textName}/> });
       (async ()=>load())()
     }
      
-  }, [messages, name]);
+  }, [messages, textName]);
 
-  function LogoTitle({e, name}) {
-    const pictureNameString = name.split("_");
+  function LogoTitle({e, textName}) {
+    const pictureNameString = textName.split("_");
     let noPicture = pictureNameString[1];
     if(!noPicture) noPicture = 1;
     let pictureName = "ronaldo_"+noPicture;

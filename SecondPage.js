@@ -30,30 +30,35 @@ function ChatsScreen({ navigation }) {
 }
 
 function SecondPage({navigation}) {
-  console.log("second page");
   const { name, age } = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
   
   useEffect(() => {
-    var newMessage = [{}];
 
-    const getAllStorageItem = allStorage();
-    dispatch(setName(getAllStorageItem));
+    async function callProduct() {
+
+      const result = {};
+      const keys = await AsyncStorage.getAllKeys();
+      for (const key of keys) {
+        const val = await AsyncStorage.getItem(key);
+        result[key] = val;
+      }
+
+      var resultText = {};
+      for (var newKey of Object.keys(result)) {
+        var resultChat = result[newKey];
+        JSON.parse(resultChat).map((user, userKey) => {
+          if(userKey == 0)  {
+            resultText[newKey] = user.text;
+          }
+        })
+      }
+      dispatch(setName(resultText));
+    }
+    
+    callProduct();
     
   }, [])
-
-  function allStorage() {
-
-    var archive = {}, // Notice change here
-        keys = Object.keys(localStorage),
-        i = keys.length;
-
-    while ( i-- ) {
-        archive[ keys[i] ] = localStorage.getItem( keys[i] );
-    }
-
-    return archive;
-}
 
   return (
     <Tab.Navigator screenOptions={{

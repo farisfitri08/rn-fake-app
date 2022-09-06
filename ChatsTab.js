@@ -9,7 +9,7 @@ import { setName, setAge, increaseAge } from './redux/actions';
 function ChatsTab({navigation, lastMessages}) {
   const { name, age } = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
-  console.log("chat tab");
+  const [lastText, setLastText] = useState({});
 //   const [lastMessages, setLastMessages] = useState({});
 //   var textChats = {
 //     chat_1: "",
@@ -37,16 +37,25 @@ function ChatsTab({navigation, lastMessages}) {
     
 //     callProduct();
 // }, []);
-  function getLastText(user) {
-    var lastText = "";
-    if (user === undefined) {
-      return lastText;
-    }
-    JSON.parse(user).map((user, key) => {
-      if(key == 0) lastText = user.text;
-    })
-    return lastText;
-  }
+
+//   useEffect(() => {
+//     Alert.alert(JSON.stringify(name));
+//     async function callProduct() {
+//       var resultText = {};
+//       for (var key of Object.keys(name)) {
+//         var resultChat = name[key];
+//         JSON.parse(resultChat).map((user, userKey) => {
+//           if(userKey == 0)  {
+//             resultText[key] = user.text;
+//           }
+//         })
+//       }
+
+//       setLastText(resultText);
+//     }
+    
+//     callProduct();
+// }, []);
   return (
     <View style={styles.container}>
         <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_1" })}>
@@ -59,7 +68,7 @@ function ChatsTab({navigation, lastMessages}) {
           </View>
           <View style={{width: "70%"}}>
           <Text style={{fontSize: 14, paddingBottom: 10}}>C.Ronaldo 1</Text>
-          <Text style={{color: 'gray', fontSize: 11}}>{getLastText(name["chat_1"])}</Text>
+          <Text style={{color: 'gray', fontSize: 11}}>{name["chat_1"]}</Text>
           </View>
         </View>
         </TouchableOpacity>
@@ -73,7 +82,7 @@ function ChatsTab({navigation, lastMessages}) {
           </View>
           <View style={{width: "70%"}}>
           <Text style={{fontSize: 14, paddingBottom: 10}}>C.Ronaldo 2</Text>
-          <Text style={{color: 'gray', fontSize: 11}}>{getLastText(name["chat_2"])}</Text>
+          <Text style={{color: 'gray', fontSize: 11}}>{name["chat_2"]}</Text>
           </View>
         </View>
         </TouchableOpacity>
@@ -87,7 +96,7 @@ function ChatsTab({navigation, lastMessages}) {
           </View>
           <View style={{width: "70%"}}>
           <Text style={{fontSize: 14, paddingBottom: 10}}>C.Ronaldo 3</Text>
-          <Text style={{color: 'gray', fontSize: 11}}>{getLastText(name["chat_3"])}</Text>
+          <Text style={{color: 'gray', fontSize: 11}}>{name["chat_3"]}</Text>
           </View>
         </View>
         </TouchableOpacity>
@@ -101,7 +110,7 @@ function ChatsTab({navigation, lastMessages}) {
           </View>
           <View style={{width: "70%"}}>
           <Text style={{fontSize: 14, paddingBottom: 10}}>C.Ronaldo 4</Text>
-          <Text style={{color: 'gray', fontSize: 11}}>{getLastText(name["chat_4"])}</Text>
+          <Text style={{color: 'gray', fontSize: 11}}>{name["chat_4"]}</Text>
           </View>
         </View>
         </TouchableOpacity>

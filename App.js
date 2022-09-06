@@ -21,8 +21,7 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function MenuScreen({ navigation, test }) {
-  Alert.alert("menu");
+function MenuScreen({ navigation }) {
   return (
     <SecondPage navigation={navigation}/>
   );

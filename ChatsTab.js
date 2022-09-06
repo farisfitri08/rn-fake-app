@@ -2,7 +2,13 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import images from "./images";
+
+import { useSelector, useDispatch } from 'react-redux';
+import { setName, setAge, increaseAge } from './redux/actions';
+
 function ChatsTab({navigation, lastMessages}) {
+  const { name, age } = useSelector(state => state.userReducer);
+  const dispatch = useDispatch();
 //   const [lastMessages, setLastMessages] = useState({});
 //   var textChats = {
 //     chat_1: "",
@@ -43,7 +49,7 @@ function ChatsTab({navigation, lastMessages}) {
           </View>
           <View style={{width: "70%"}}>
           <Text style={{fontSize: 14, paddingBottom: 10}}>C.Ronaldo 1</Text>
-          <Text style={{color: 'gray', fontSize: 11}}>Message</Text>
+          <Text style={{color: 'gray', fontSize: 11}}>Your age is {age}</Text>
           </View>
         </View>
         </TouchableOpacity>

@@ -1,9 +1,12 @@
-import * as React from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Button, View, Text } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import ProfileTab from './ProfileTab.js';
 import ContactsTab from './ContactsTab.js';
 import ChatsTab from './ChatsTab.js';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { setName, setAge } from './redux/actions';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -26,6 +29,12 @@ function ChatsScreen({ navigation }) {
 }
 
 function SecondPage({navigation}) {
+  const { name, age } = useSelector(state => state.userReducer);
+  const dispatch = useDispatch();
+  useEffect(() => {
+  dispatch(setName("faris"));
+  dispatch(setAge(12));
+  }, []);
   return (
     <Tab.Navigator screenOptions={{
       tabBarActiveTintColor: '#000000', 

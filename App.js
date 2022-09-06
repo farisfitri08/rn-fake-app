@@ -12,6 +12,9 @@ import VideoCall from './VideoCall.js';
 import { Camera, CameraType } from 'expo-camera';
 import { HeaderBackButton } from '@react-navigation/elements';
 
+import { Provider } from 'react-redux';
+import { Store } from './redux/store';
+
 function HomeScreen({ navigation }) {
   return (
     <HomePage navigation={navigation}/>
@@ -64,6 +67,7 @@ function App() {
   useEffect(()=>{requestPermission()},[]);
   
   return (
+    <Provider store={Store}>
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} options={{headerStyle: {backgroundColor: '#FFFFFF'}}}/>
@@ -80,6 +84,7 @@ function App() {
         <Stack.Screen name="VideoCall" options={{headerShown: false}} component={VideoCallScreen} />  
       </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
   );
 }
 

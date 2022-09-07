@@ -50,7 +50,7 @@ export default function Chat({navigation, textName}) {
     var newMessage = [
       {
         _id: 1,
-        text: 'Hello developer',
+        text: 'Hello',
         createdAt: new Date(),
         user: {
           _id: 2,

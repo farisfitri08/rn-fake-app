@@ -1,7 +1,7 @@
 [
     {
         "_id": "@{id}",
-        "text": "Testing auto message",
+        "text": "Do you have instagram?",
         "createdAt": "@{currentdate}",
         "user": {
             "_id": "@{id}",

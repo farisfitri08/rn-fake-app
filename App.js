@@ -41,13 +41,13 @@ function ChatScreen({route, navigation }) {
 
 function CameraCallScreen({route, navigation, permission }) {  
   return (
-    <CameraCall navigation={navigation} cameraCallName={route.params.cameraCallName} permission={permission}/>
+    <CameraCall navigation={navigation} cameraCallName={route.params.cameraCallName} permission={permission} pageScreen={route.params.pageScreen}/>
   );
 }
 
 function VideoCallScreen({route, navigation}) {
   return (
-    <VideoCall navigation={navigation} name={route.params.videoCallName}/>
+    <VideoCall navigation={navigation} name={route.params.videoCallName} pageScreen={route.params.pageScreen}/>
   );
 }
 

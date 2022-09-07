@@ -19,10 +19,10 @@ export default function App() {
   const [videoSourceClick, setVideoSourceClick] = useState(null);
 
   let videoReference = {
-    ronaldo_1:require('./video/ronaldo_1.mp4'),
-    ronaldo_2:require('./video/ronaldo_2.mp4'),
-    ronaldo_3:require('./video/ronaldo_3.mp4'),
-    ronaldo_4:require('./video/ronaldo_4.mp4')
+    cr_1:require('./video/cr_1.mp4'),
+    cr_2:require('./video/cr_2.mp4'),
+    cr_3:require('./video/cr_3.mp4'),
+    cr_4:require('./video/cr_4.mp4')
   }
   
 

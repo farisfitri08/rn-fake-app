@@ -3,20 +3,20 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button } from '
 import { Camera, CameraType } from 'expo-camera';
 import { Video, AVPlaybackStatus, Audio } from 'expo-av';
 
-function VideoCall({navigation, name}) {
+function VideoCall({navigation, name, pageScreen}) {
     const [type, setType] = useState(CameraType.front);
     const [videoSourceClick, setVideoSourceClick] = useState(null);
     const [status, setStatus] = useState({});
     const video = useRef(null);
     let videoReference = {
-      ronaldo_1:require('./video/ronaldo_1.mp4'),
-      ronaldo_2:require('./video/ronaldo_2.mp4'),
-      ronaldo_3:require('./video/ronaldo_3.mp4'),
-      ronaldo_4:require('./video/ronaldo_4.mp4')
+      cr_1:require('./video/cr_1.mp4'),
+      cr_2:require('./video/cr_2.mp4'),
+      cr_3:require('./video/cr_3.mp4'),
+      cr_4:require('./video/cr_4.mp4')
     }
 
     useEffect(() => {
-      let item_video = "ronaldo_1";
+      let item_video = name;
 
       let videoRef = videoReference[item_video];
 
@@ -47,7 +47,9 @@ function VideoCall({navigation, name}) {
           />
       </View>
       <View style={styles.box}>
-        <TouchableOpacity onPress={() => {navigation.navigate('Menu')}}>
+        <TouchableOpacity onPress={() => { 
+          (pageScreen == 'About') ? navigation.navigate('About', { pictureName: name }) : navigation.navigate('Menu')
+        }}>
         <Image
               style={{ width: 50, height: 50, borderRadius: 50 }}
               source={require('./picture/reject_button.png')}

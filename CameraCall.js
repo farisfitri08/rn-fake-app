@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button, BackHan
 import { Camera, CameraType } from 'expo-camera';
 import { Video, AVPlaybackStatus, Audio } from 'expo-av';
 
-function CameraCall({navigation, cameraCallName, permission}) {
+function CameraCall({navigation, cameraCallName, permission, pageScreen}) {
     const [type, setType] = useState(CameraType.front);
     const [sound, setSound] = useState(null);
     
@@ -22,7 +22,8 @@ function CameraCall({navigation, cameraCallName, permission}) {
           sound.unloadAsync();
           setSound(null);
         }
-        navigation.navigate('Menu')
+
+        (pageScreen == 'About') ? navigation.navigate('About', { pictureName: cameraCallName }) : navigation.navigate('Menu')
         return true;
       };
   
@@ -59,7 +60,7 @@ function CameraCall({navigation, cameraCallName, permission}) {
                         sound.unloadAsync();
                         setSound(null);
                       }
-                      navigation.navigate('VideoCall', { videoCallName: cameraCallName })
+                      navigation.navigate('VideoCall', { videoCallName: cameraCallName, pageScreen: pageScreen})
                     }
                   }>
                   <Image

@@ -92,7 +92,7 @@ export default function Chat({navigation, textName}) {
     const pictureNameString = textName.split("_");
     let noPicture = pictureNameString[1];
     if(!noPicture) noPicture = 1;
-    let pictureName = "ronaldo_"+noPicture;
+    let pictureName = "cr_"+noPicture;
     let pictureRef = images[pictureName];
 
     return (

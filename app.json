@@ -1,9 +1,9 @@
 {
   "expo": {
     "name": "Cristiano Ronaldo Fake Video Call & Chat",
-    "slug": "ronaldo-fake-video-call-and-chat",
+    "slug": "cristianoRonaldoFakeVideoCallAndChat",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -21,6 +21,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.cristianoRonaldoFakeVideoCallAndChat",
+      "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -28,6 +30,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ed5f39e7-f485-40d6-ac58-6ad74568a428"
+      }
     }
   }
 }

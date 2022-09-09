@@ -47,18 +47,7 @@ export default function Chat({navigation, textName}) {
   },[])
 
   useEffect(() => {
-    var newMessage = [
-      {
-        _id: 1,
-        text: 'Hello',
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
-        },
-      },
-    ];
+    var newMessage = [{}];
 
     checkMessageStorage().then(checkMessage => {
       if(checkMessage != null) {
@@ -127,6 +116,12 @@ export default function Chat({navigation, textName}) {
       
       var autoMessagesString = JSON.stringify(randonJsonValue);
 
+      const pictureNameStringSplit = textName.split("_");
+      let noPicture = pictureNameStringSplit[1];
+      if(!noPicture) noPicture = 1;
+      let pictureName = "cr_"+noPicture;
+      let pictureRef = images[pictureName];
+      
       var parsedString = autoMessagesString.replace(/@\{(\w+)\}/g, function(match, group) {
         if (group === 'currentdate') {
           return new Date();
@@ -136,6 +131,8 @@ export default function Chat({navigation, textName}) {
       });
 
       var autoMessage = JSON.parse(parsedString);
+
+      autoMessage["user"]["avatar"] = pictureRef;
       
       setMessages(previousMessages => GiftedChat.append(previousMessages, autoMessage))
 

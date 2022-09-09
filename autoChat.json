@@ -6,7 +6,7 @@
         "user": {
             "_id": "@{id}",
             "name": "React Native",
-            "avatar": "https://placeimg.com/140/140/any"
+            "avatar": "@{picture}"
         },
         "chat": "bot"
     },
@@ -17,7 +17,7 @@
         "user": {
           "_id": "@{id}",
           "name": "React Native",
-          "avatar": "https://placeimg.com/140/140/any"
+          "avatar": "@{picture}"
         },
         "chat": "bot"
     },
@@ -28,7 +28,7 @@
         "user": {
           "_id": "@{id}",
           "name": "React Native",
-          "avatar": "https://placeimg.com/140/140/any"
+          "avatar": "@{picture}"
         },
         "chat": "bot"
     },
@@ -39,7 +39,7 @@
         "user": {
           "_id": "@{id}",
           "name": "React Native",
-          "avatar": "https://placeimg.com/140/140/any"
+          "avatar": "@{picture}"
         },
         "chat": "bot"
     },
@@ -50,7 +50,7 @@
         "user": {
           "_id": "@{id}",
           "name": "React Native",
-          "avatar": "https://placeimg.com/140/140/any"
+          "avatar": "@{picture}"
         },
         "chat": "bot"
     },
@@ -61,7 +61,7 @@
         "user": {
           "_id": "@{id}",
           "name": "React Native",
-          "avatar": "https://placeimg.com/140/140/any"
+          "avatar": "@{picture}"
         },
         "chat": "bot"
     }

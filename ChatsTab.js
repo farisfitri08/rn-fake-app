@@ -3,10 +3,10 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-na
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import User from "./User";
 import { useSelector, useDispatch } from 'react-redux';
-import { setName, setAge, increaseAge } from './redux/actions';
+import { setName } from './redux/actions';
 
 function ChatsTab({navigation, lastMessages}) {
-  const { name, age } = useSelector(state => state.userReducer);
+  const { name } = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
   const [lastText, setLastText] = useState({});
 //   const [lastMessages, setLastMessages] = useState({});

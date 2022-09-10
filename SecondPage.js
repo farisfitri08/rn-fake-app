@@ -4,7 +4,6 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import ProfileTab from './ProfileTab.js';
 import ContactsTab from './ContactsTab.js';
 import ChatsTab from './ChatsTab.js';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { setName } from './redux/actions';
 import AsyncStorage from '@react-native-async-storage/async-storage';

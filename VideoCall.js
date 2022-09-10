@@ -72,9 +72,6 @@ const styles = StyleSheet.create({
         }
     })
   },
-  camera: {
-    flex: 1,
-  },
   buttonContainer: {
     display: "flex",
     flexWrap: "wrap",
@@ -86,11 +83,6 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     alignItems: 'center',
   },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'white',
-  },
   video: {
     position: "absolute",
     top: 0,
@@ -98,20 +90,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     backgroundColor: "black"
-  },
-  selfieCameraOnVideo: {
-    position: "absolute",
-    top: 50,
-    left: 280,
-    bottom: 630,
-    right: 10,
-  },
-  cancelVideoButton: {
-    position: "absolute",
-    top: 750,
-    left: 100,
-    bottom: 0,
-    right: 100,
   },
   box: {
     flexGrow: 1, 

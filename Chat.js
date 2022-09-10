@@ -109,7 +109,13 @@ export default function Chat({navigation, textName}) {
 
   const autoBot = useCallback ((messages = []) => {
     setTimeout(() => {
-      let newId = Math.floor(Math.random() * 100);
+      var dt = new Date().getTime();
+      var newId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = (dt + Math.random()*16)%16 | 0;
+          dt = Math.floor(dt/16);
+          return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+      });
+      
       var countJson = Object.keys(autoMessages).length;
       var randomNoJson = Math.floor(Math.random() * countJson);
       var randonJsonValue = autoMessages[randomNoJson];

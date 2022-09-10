@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import images from "./images";
-
+import person from './person';
 import { useSelector, useDispatch } from 'react-redux';
 import { setName, setAge, increaseAge } from './redux/actions';
 
@@ -73,7 +73,7 @@ const chatsDisplay = Object.entries(images).map(([key, value]) => {
             />
         </View>
         <View style={{width: "70%"}}>
-        <Text style={{fontSize: 14, paddingBottom: 10}}>C.Ronaldo {noPicture}</Text>
+        <Text style={{fontSize: 14, paddingBottom: 10}}>{person["short_name"]} {noPicture}</Text>
         <Text style={{color: 'gray', fontSize: 11}}>{name[chatNumberName]}</Text>
         </View>
       </View>

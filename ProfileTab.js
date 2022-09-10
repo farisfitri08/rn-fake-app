@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import images from './images';
+import person from './person';
 
 function ProfileTab({navigation}) {
   const profileDisplay = Object.entries(images).map(([key, value]) => {
@@ -15,7 +16,7 @@ function ProfileTab({navigation}) {
                   style={{ width: 50, height: 50, borderRadius: 50 }}
                   source={images[key]}
                 />
-            <Text style={{fontSize: 14}}>C.Ronaldo {noPicture}</Text>
+            <Text style={{fontSize: 14}}>{person["short_name"]} {noPicture}</Text>
             <Text style={{color: 'gray', fontSize: 10}}>Active Now</Text>
           </View>
         </TouchableOpacity>

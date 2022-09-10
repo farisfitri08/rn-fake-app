@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import images from "./images";
+import person from './person';
 import { useSelector, useDispatch } from 'react-redux';
 import { setName, setAge } from './redux/actions';
 
@@ -91,7 +92,7 @@ export default function Chat({navigation, textName}) {
               source={pictureRef}
             /></View>
             <View style={{display: 'flex', flexDirection: "column", justifyContent: "center"}}>
-              <Text style={{paddingLeft: 10, fontWeight: 'bold', fontSize: 15}}>Cristiano Ronaldo {noPicture}</Text>
+              <Text style={{paddingLeft: 10, fontWeight: 'bold', fontSize: 15}}>{person["full_name"]} {noPicture}</Text>
               <Text style={{paddingLeft: 10, color: 'gray', fontSize: 11}}>{nowOnlineStatus}</Text>
             </View>
           </View>

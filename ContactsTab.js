@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faVideo } from '@fortawesome/free-solid-svg-icons/faVideo';
 import { faMessage } from '@fortawesome/free-solid-svg-icons/faMessage';
 import images from './images';
+import person from './person';
 
 function ContactsTab({navigation}) {
   const contactsDisplay = Object.entries(images).map(([key, value]) => {
@@ -19,7 +20,7 @@ function ContactsTab({navigation}) {
               />
           </View>
           <View style={{width: "40%"}}>
-          <Text style={{fontSize: 14, paddingBottom: 10}}>C.Ronaldo {noPicture}</Text>
+          <Text style={{fontSize: 14, paddingBottom: 10}}>{person["short_name"]} {noPicture}</Text>
           <Text style={{color: 'gray', fontSize: 11}}>+44 7911 123456</Text>
           </View>
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "flex-end", justifyContent: "flex-end", padding: 10}}>

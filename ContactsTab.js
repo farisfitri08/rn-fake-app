@@ -3,11 +3,41 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faVideo } from '@fortawesome/free-solid-svg-icons/faVideo';
 import { faMessage } from '@fortawesome/free-solid-svg-icons/faMessage';
+import images from './images';
 
 function ContactsTab({navigation}) {
+  const contactsDisplay = Object.entries(images).map(([key, value]) => {
+    const pictureNameString = key.split("_");
+    let noPicture = pictureNameString[1];
+    if(!noPicture) noPicture = 1;
+    return (
+      <View style={styles.row} key={key}>
+          <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
+          <Image
+                style={{ width: 50, height: 50, borderRadius: 50 }}
+                source={images[key]}
+              />
+          </View>
+          <View style={{width: "40%"}}>
+          <Text style={{fontSize: 14, paddingBottom: 10}}>C.Ronaldo {noPicture}</Text>
+          <Text style={{color: 'gray', fontSize: 11}}>+44 7911 123456</Text>
+          </View>
+          <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "flex-end", justifyContent: "flex-end", padding: 10}}>
+          <TouchableOpacity onPress={() => navigation.navigate('CameraCall', { cameraCallName: key })}>
+          <FontAwesomeIcon icon={ faVideo } size={40}/>
+          </TouchableOpacity>
+          </View>
+          <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "flex-start", justifyContent: "flex-start", padding: 5, marginTop: 5}}>
+          <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_"+noPicture })}>
+          <FontAwesomeIcon icon={ faMessage } size={30}/>
+          </TouchableOpacity>
+          </View>
+        </View>
+    );
+  });
   return (
     <View style={styles.container}>
-        <View style={styles.row}>
+        {/* <View style={styles.row}>
           <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
           <Image
                 style={{ width: 50, height: 50, borderRadius: 50 }}
@@ -94,7 +124,8 @@ function ContactsTab({navigation}) {
           <FontAwesomeIcon icon={ faMessage } size={30}/>
           </TouchableOpacity>
           </View>
-        </View>
+        </View> */}
+        {contactsDisplay}
     </View>
   );
 }

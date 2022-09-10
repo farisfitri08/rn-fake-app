@@ -2,18 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button, Platform, StatusBar } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import { Video, AVPlaybackStatus, Audio } from 'expo-av';
+import videoReference from "./videos";
 
 function VideoCall({navigation, name, pageScreen}) {
     const [type, setType] = useState(CameraType.front);
     const [videoSourceClick, setVideoSourceClick] = useState(null);
     const [status, setStatus] = useState({});
     const video = useRef(null);
-    let videoReference = {
-      cr_1:require('./video/cr_1.mp4'),
-      cr_2:require('./video/cr_2.mp4'),
-      cr_3:require('./video/cr_3.mp4'),
-      cr_4:require('./video/cr_4.mp4')
-    }
 
     useEffect(() => {
       let item_video = name;

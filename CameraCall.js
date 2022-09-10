@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button, BackHandler, Platform, StatusBar } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import { Video, AVPlaybackStatus, Audio } from 'expo-av';
-import images from "./images";
+import User from "./User";
 
 function CameraCall({navigation, cameraCallName, permission, pageScreen}) {
     const [type, setType] = useState(CameraType.front);
@@ -47,11 +47,11 @@ function CameraCall({navigation, cameraCallName, permission, pageScreen}) {
             <View style={{display: "flex", alignSelf: "center", paddingTop: 50 }}>
               <Image
               style={{ width: 90, height: 90, borderRadius: 50 }}
-              source={images[cameraCallName]}
+              source={User["images"][cameraCallName]}
             />
             </View>
             <View style={{display: "flex", alignSelf: "center", padding: 9 }}>
-              <Text style={{fontSize: 19, color: "white"}}>Cristiano Ronaldo {pictureNumber}</Text>
+              <Text style={{fontSize: 19, color: "white"}}>{User["person"]["full_name"]} {pictureNumber}</Text>
             </View>
             <View style={{display: "flex", alignSelf: "center" }}>
               <Text style={{fontSize: 15, color: "white"}}>incoming video call</Text>

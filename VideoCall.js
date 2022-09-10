@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button, Platform, StatusBar } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import { Video, AVPlaybackStatus, Audio } from 'expo-av';
-import videoReference from "./videos";
+import User from './User';
 
 function VideoCall({navigation, name, pageScreen}) {
     const [type, setType] = useState(CameraType.front);
@@ -13,7 +13,7 @@ function VideoCall({navigation, name, pageScreen}) {
     useEffect(() => {
       let item_video = name;
 
-      let videoRef = videoReference[item_video];
+      let videoRef = User["videos"][item_video];
 
       setVideoSourceClick(videoRef);
     }, []);

@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import images from './images';
-import person from './person';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
+import User from './User';
 
 function ProfileTab({navigation}) {
-  const profileDisplay = Object.entries(images).map(([key, value]) => {
+  const profileDisplay = Object.entries(User["images"]).map(([key, value]) => {
     const pictureNameString = key.split("_");
     let noPicture = pictureNameString[1];
     if(!noPicture) noPicture = 1;
@@ -14,9 +13,9 @@ function ProfileTab({navigation}) {
           <View style={styles.column}>
             <Image
                   style={{ width: 50, height: 50, borderRadius: 50 }}
-                  source={images[key]}
+                  source={User["images"][key]}
                 />
-            <Text style={{fontSize: 14}}>{person["short_name"]} {noPicture}</Text>
+            <Text style={{fontSize: 14}}>{User["person"]["short_name"]} {noPicture}</Text>
             <Text style={{color: 'gray', fontSize: 10}}>Active Now</Text>
           </View>
         </TouchableOpacity>

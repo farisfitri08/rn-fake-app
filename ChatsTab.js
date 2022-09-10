@@ -1,8 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import images from "./images";
-import person from './person';
+import User from "./User";
 import { useSelector, useDispatch } from 'react-redux';
 import { setName, setAge, increaseAge } from './redux/actions';
 
@@ -57,7 +56,7 @@ function ChatsTab({navigation, lastMessages}) {
 //     callProduct();
 // }, []);
 
-const chatsDisplay = Object.entries(images).map(([key, value]) => {
+const chatsDisplay = Object.entries(User["images"]).map(([key, value]) => {
   const pictureNameString = key.split("_");
   let noPicture = pictureNameString[1];
   if(!noPicture) noPicture = 1;
@@ -69,11 +68,11 @@ const chatsDisplay = Object.entries(images).map(([key, value]) => {
         <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
         <Image
               style={{width: 50, height: 50, borderRadius: 50}}
-              source={images[key]}
+              source={User["images"][key]}
             />
         </View>
         <View style={{width: "70%"}}>
-        <Text style={{fontSize: 14, paddingBottom: 10}}>{person["short_name"]} {noPicture}</Text>
+        <Text style={{fontSize: 14, paddingBottom: 10}}>{User["person"]["short_name"]} {noPicture}</Text>
         <Text style={{color: 'gray', fontSize: 11}}>{name[chatNumberName]}</Text>
         </View>
       </View>

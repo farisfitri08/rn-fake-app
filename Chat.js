@@ -4,8 +4,7 @@ import { GiftedChat } from 'react-native-gifted-chat';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import images from "./images";
-import person from './person';
+import User from './User';
 import { useSelector, useDispatch } from 'react-redux';
 import { setName, setAge } from './redux/actions';
 
@@ -22,9 +21,9 @@ export default function Chat({navigation, textName}) {
     if(messages.length != 0) {
       await AsyncStorage.setItem(textName, messageString);
       var resultText = {};
-        messages.map((user, userKey) => {
+        messages.map((userMessage, userKey) => {
           if(userKey == 0)  {
-            name[textName] = user.text;
+            name[textName] = userMessage.text;
           }
         })
         resultText = name;
@@ -83,7 +82,7 @@ export default function Chat({navigation, textName}) {
     let noPicture = pictureNameString[1];
     if(!noPicture) noPicture = 1;
     let pictureName = "cr_"+noPicture;
-    let pictureRef = images[pictureName];
+    let pictureRef = User["images"][pictureName];
 
     return (
       <View style={styles.box}>
@@ -92,7 +91,7 @@ export default function Chat({navigation, textName}) {
               source={pictureRef}
             /></View>
             <View style={{display: 'flex', flexDirection: "column", justifyContent: "center"}}>
-              <Text style={{paddingLeft: 10, fontWeight: 'bold', fontSize: 15}}>{person["full_name"]} {noPicture}</Text>
+              <Text style={{paddingLeft: 10, fontWeight: 'bold', fontSize: 15}}>{User["person"]["full_name"]} {noPicture}</Text>
               <Text style={{paddingLeft: 10, color: 'gray', fontSize: 11}}>{nowOnlineStatus}</Text>
             </View>
           </View>
@@ -121,7 +120,7 @@ export default function Chat({navigation, textName}) {
       let noPicture = pictureNameStringSplit[1];
       if(!noPicture) noPicture = 1;
       let pictureName = "cr_"+noPicture;
-      let pictureRef = images[pictureName];
+      let pictureRef = User["images"][pictureName];
       
       var parsedString = autoMessagesString.replace(/@\{(\w+)\}/g, function(match, group) {
         if (group === 'currentdate') {

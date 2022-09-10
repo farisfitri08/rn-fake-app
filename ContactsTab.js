@@ -3,11 +3,10 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faVideo } from '@fortawesome/free-solid-svg-icons/faVideo';
 import { faMessage } from '@fortawesome/free-solid-svg-icons/faMessage';
-import images from './images';
-import person from './person';
+import User from './User';
 
 function ContactsTab({navigation}) {
-  const contactsDisplay = Object.entries(images).map(([key, value]) => {
+  const contactsDisplay = Object.entries(User["images"]).map(([key, value]) => {
     const pictureNameString = key.split("_");
     let noPicture = pictureNameString[1];
     if(!noPicture) noPicture = 1;
@@ -16,11 +15,11 @@ function ContactsTab({navigation}) {
           <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
           <Image
                 style={{ width: 50, height: 50, borderRadius: 50 }}
-                source={images[key]}
+                source={User["images"][key]}
               />
           </View>
           <View style={{width: "40%"}}>
-          <Text style={{fontSize: 14, paddingBottom: 10}}>{person["short_name"]} {noPicture}</Text>
+          <Text style={{fontSize: 14, paddingBottom: 10}}>{User["person"]["short_name"]} {noPicture}</Text>
           <Text style={{color: 'gray', fontSize: 11}}>+44 7911 123456</Text>
           </View>
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "flex-end", justifyContent: "flex-end", padding: 10}}>

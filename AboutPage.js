@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity, Alert } from 'react-na
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faVideo } from '@fortawesome/free-solid-svg-icons/faVideo';
 import { faMessage } from '@fortawesome/free-solid-svg-icons/faMessage';
-import pictureReference from './images';
+import User from './User';
 
 function AboutPage({pictureName, navigation}) {
     useEffect(() => {
@@ -16,7 +16,7 @@ function AboutPage({pictureName, navigation}) {
             <Image
                 style={{ width: "100%", height: "100%", borderRadius: 25 }}
                 resizeMode="contain"
-                source={pictureReference[pictureName]}
+                source={User["images"][pictureName]}
             />
             </View>
         </View>

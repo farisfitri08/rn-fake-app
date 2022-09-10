@@ -56,9 +56,34 @@ function ChatsTab({navigation, lastMessages}) {
     
 //     callProduct();
 // }, []);
+
+const chatsDisplay = Object.entries(images).map(([key, value]) => {
+  const pictureNameString = key.split("_");
+  let noPicture = pictureNameString[1];
+  if(!noPicture) noPicture = 1;
+  let chatNumberName = "chat_"+noPicture;
+  return (
+    <View key={key}>
+    <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: chatNumberName })}>
+        <View style={styles.row}>
+        <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
+        <Image
+              style={{width: 50, height: 50, borderRadius: 50}}
+              source={images[key]}
+            />
+        </View>
+        <View style={{width: "70%"}}>
+        <Text style={{fontSize: 14, paddingBottom: 10}}>C.Ronaldo {noPicture}</Text>
+        <Text style={{color: 'gray', fontSize: 11}}>{name[chatNumberName]}</Text>
+        </View>
+      </View>
+      </TouchableOpacity>
+      </View>
+  );
+});
   return (
     <View style={styles.container}>
-        <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_1" })}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_1" })}>
         <View style={styles.row}>
           <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
           <Image
@@ -113,7 +138,8 @@ function ChatsTab({navigation, lastMessages}) {
           <Text style={{color: 'gray', fontSize: 11}}>{name["chat_4"]}</Text>
           </View>
         </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        {chatsDisplay}
     </View>
   );
 }

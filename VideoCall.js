@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button, Platform, StatusBar } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import { Video, AVPlaybackStatus, Audio } from 'expo-av';
 
@@ -42,7 +42,7 @@ function VideoCall({navigation, name, pageScreen}) {
       <View style={styles.buttonContainer}>
       <View style={styles.box}>
           <Image
-            style={{ width: 50, height: 50, borderRadius: 50 }}
+            style={{ width: 60, height: 60, borderRadius: 50 }}
             source={require('./picture/camera_rotate_button.png')}
           />
       </View>
@@ -51,14 +51,14 @@ function VideoCall({navigation, name, pageScreen}) {
           (pageScreen == 'About') ? navigation.navigate('About', { pictureName: name }) : navigation.navigate('Menu')
         }}>
         <Image
-              style={{ width: 50, height: 50, borderRadius: 50 }}
+              style={{ width: 60, height: 60, borderRadius: 50 }}
               source={require('./picture/reject_button.png')}
             />
       </TouchableOpacity>
       </View>
       <View style={styles.box}>
       <Image
-            style={{ width: 50, height: 50, borderRadius: 50 }}
+            style={{ width: 60, height: 60, borderRadius: 50 }}
             source={require('./picture/mute_button.png')}
           />
       </View>
@@ -71,7 +71,11 @@ function VideoCall({navigation, name, pageScreen}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    ...Platform.select({
+        android: {
+            marginTop: StatusBar.currentHeight
+        }
+    })
   },
   camera: {
     flex: 1,
@@ -124,16 +128,16 @@ const styles = StyleSheet.create({
   },
   box_beside_camera: {
     flexGrow: 1, 
-    width: "75%", 
-    height: "20%", 
+    width: "71%", 
+    height: "18%", 
     justifyContent: "center",
     alignItems: "center",
   },
   box_camera: {
     flexGrow: 1, 
-    width: "21%", 
-    margin: 4,
-    height: "20%",
+    width: "23%", 
+    margin: 10,
+    height: "18%",
     justifyContent: "center",
     alignItems: "center",
   }

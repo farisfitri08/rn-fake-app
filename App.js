@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Button, View, Text, Alert } from 'react-native';
+import { Button, View, Text, Alert, SafeAreaView, StyleSheet, Platform, StatusBar  } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomePage from './HomePage.js';
@@ -84,5 +84,17 @@ function App() {
     </Provider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    ...Platform.select({
+        android: {
+            marginTop: StatusBar.currentHeight
+        }
+    })
+
+}
+});
 
 export default App;

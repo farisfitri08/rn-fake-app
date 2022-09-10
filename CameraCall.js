@@ -1,12 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button, BackHandler } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button, BackHandler, Platform, StatusBar } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import { Video, AVPlaybackStatus, Audio } from 'expo-av';
+import images from "./images";
 
 function CameraCall({navigation, cameraCallName, permission, pageScreen}) {
     const [type, setType] = useState(CameraType.front);
     const [sound, setSound] = useState(null);
+    const [pictureNumber, setPictureNumber] = useState(null);
     
+    useEffect(() => {
+      const pictureNameString = cameraCallName.split("_");
+      let noPicture = pictureNameString[1];
+      if(!noPicture) noPicture = 1;
+      setPictureNumber(noPicture);
+    }, []);
     useEffect(() => {
       sound ? () => { sound.unloadAsync(); }  : undefined;
 
@@ -36,6 +44,18 @@ function CameraCall({navigation, cameraCallName, permission, pageScreen}) {
     <View style={styles.container}>
         {permission ? (
         <Camera style={styles.camera} type={type}>
+            <View style={{display: "flex", alignSelf: "center", paddingTop: 50 }}>
+              <Image
+              style={{ width: 90, height: 90, borderRadius: 50 }}
+              source={images[cameraCallName]}
+            />
+            </View>
+            <View style={{display: "flex", alignSelf: "center", padding: 9 }}>
+              <Text style={{fontSize: 19, color: "white"}}>Cristiano Ronaldo {pictureNumber}</Text>
+            </View>
+            <View style={{display: "flex", alignSelf: "center" }}>
+              <Text style={{fontSize: 15, color: "white"}}>incoming video call</Text>
+            </View>
             <View style={styles.buttonContainer}>
             <View style={styles.box}>
                 <TouchableOpacity onPress={() => {
@@ -48,7 +68,7 @@ function CameraCall({navigation, cameraCallName, permission, pageScreen}) {
                   }
                 }>
                   <Image
-                      style={{ width: 50, height: 50, borderRadius: 50 }}
+                      style={{ width: 60, height: 60, borderRadius: 50 }}
                       source={require('./picture/reject_button.png')}
                     />
                 </TouchableOpacity>
@@ -64,7 +84,7 @@ function CameraCall({navigation, cameraCallName, permission, pageScreen}) {
                     }
                   }>
                   <Image
-                      style={{ width: 50, height: 50, borderRadius: 50 }}
+                      style={{ width: 60, height: 60, borderRadius: 50 }}
                       source={require('./picture/accept_video_button.png')}
                     />
                 </TouchableOpacity>
@@ -92,8 +112,12 @@ async function removeSoundCall() {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      justifyContent: 'center',
+    flex: 1,
+    ...Platform.select({
+        android: {
+            marginTop: StatusBar.currentHeight
+        }
+    })
     },
     camera: {
       flex: 1,

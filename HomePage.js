@@ -38,11 +38,11 @@ function HomePage({navigation}) {
       justifyContent: 'flex-start',
       marginHorizontal: 16,
       marginVertical: 50 }}>
-      <TouchableHighlight onPress={() => navigation.navigate('Menu')} activeOpacity={1} underlayColor="#0077F6" style={{alignItems: "center", justifyContent: "center", backgroundColor: "#077FFF", marginTop: 15, borderRadius: 10}}>
-        <Text style={{padding: 9, fontWeight: 'bold', fontSize: 14, color: "white"}}>START</Text>
+      <TouchableHighlight onPress={() => navigation.navigate('Menu')} activeOpacity={1} underlayColor="#0077F6" style={{alignItems: "center", justifyContent: "center", backgroundColor: "#077FFF", marginTop: 20, borderRadius: 10}}>
+        <Text style={{padding: 14, fontWeight: 'bold', fontSize: 14, color: "white"}}>START</Text>
       </TouchableHighlight>
-      <TouchableHighlight onPress={() => {QuitApp()} }  activeOpacity={1} underlayColor="#0077F6" style={{alignItems: "center", justifyContent: "center", backgroundColor: "#077FFF", marginTop: 15, borderRadius: 10}}>
-        <Text style={{padding: 9, fontWeight: 'bold', fontSize: 14, color: "white"}}>QUIT</Text>
+      <TouchableHighlight onPress={() => {QuitApp()} }  activeOpacity={1} underlayColor="#0077F6" style={{alignItems: "center", justifyContent: "center", backgroundColor: "#077FFF", marginTop: 20, borderRadius: 10}}>
+        <Text style={{padding: 14, fontWeight: 'bold', fontSize: 14, color: "white"}}>QUIT</Text>
       </TouchableHighlight>
     </View>
   );

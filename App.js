@@ -1,20 +1,15 @@
-import { useState, useEffect, useRef } from 'react';
-import { Button, View, Text, Alert, SafeAreaView, StyleSheet, Platform, StatusBar  } from 'react-native';
+import { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomePage from './HomePage.js';
 import SecondPage from './SecondPage.js';
 import AboutPage from './AboutPage.js';
 import Chat from './Chat.js';
-
 import CameraCall from './CameraCall.js';
 import VideoCall from './VideoCall.js';
 import { Camera, CameraType } from 'expo-camera';
-import { HeaderBackButton } from '@react-navigation/elements';
-
 import { Provider } from 'react-redux';
 import { Store } from './redux/store';
-import * as ScreenOrientation from 'expo-screen-orientation';
 
 function HomeScreen({ navigation }) {
   return (
@@ -84,17 +79,5 @@ function App() {
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    ...Platform.select({
-        android: {
-            marginTop: StatusBar.currentHeight
-        }
-    })
-
-}
-});
 
 export default App;

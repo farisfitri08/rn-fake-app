@@ -1,10 +1,31 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import images from './images';
 
 function ProfileTab({navigation}) {
+  const profileDisplay = Object.entries(images).map(([key, value]) => {
+    const pictureNameString = key.split("_");
+    let noPicture = pictureNameString[1];
+    if(!noPicture) noPicture = 1;
+    return (
+      <View style={styles.box} key={key}>
+        <TouchableOpacity onPress={() => navigation.navigate('About', { pictureName: key })}>
+          <View style={styles.column}>
+            <Image
+                  style={{ width: 50, height: 50, borderRadius: 50 }}
+                  source={images[key]}
+                />
+            <Text style={{fontSize: 14}}>C.Ronaldo {noPicture}</Text>
+            <Text style={{color: 'gray', fontSize: 10}}>Active Now</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  });
+
   return (
     <View style={styles.container}>
-      <View style={styles.box}>
+      {/* <View style={styles.box}>
         <TouchableOpacity onPress={() => navigation.navigate('About', { pictureName: 'cr_1' })}>
           <View style={styles.column}>
             <Image
@@ -53,7 +74,8 @@ function ProfileTab({navigation}) {
         </TouchableOpacity>
       </View>
       <View style={styles.box}></View>
-      <View style={styles.box}></View>
+      <View style={styles.box}></View> */}
+      {profileDisplay}
     </View>
   );
 }
@@ -63,21 +85,24 @@ const styles = StyleSheet.create({
     display: "flex",
     flexWrap: "wrap",
     flexDirection: "row",
+    justifyContent: "flex-start",
+    flex: 1,
   },
   column: {
     display: 'flex',
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    alignContent: "center",
+    alignContent: "center"
   },
   box: {
-    flexGrow: 1, 
+    order: 5,
     width: "32%", 
     margin: 2,
-    height: 130, 
+    height: 130,
+    textAlign: "center", 
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   }
 });
 

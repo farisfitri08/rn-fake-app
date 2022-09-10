@@ -148,14 +148,6 @@ export default function Chat({navigation, textName}) {
   }, []);
   
   const styles = StyleSheet.create({
-    tinyLogo: {
-      width: 50,
-      height: 50,
-    },
-    logo: {
-      width: 66,
-      height: 58,
-    },
     box: {
       display: 'flex',
       flexDirection: "row",

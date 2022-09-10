@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button, BackHandler, Platform, StatusBar } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import { Video, AVPlaybackStatus, Audio } from 'expo-av';

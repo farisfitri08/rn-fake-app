@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import User from "./User";
 import { useSelector, useDispatch } from 'react-redux';
 import { setName } from './redux/actions';

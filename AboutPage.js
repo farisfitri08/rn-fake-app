@@ -24,10 +24,6 @@ function AboutPage({pictureName, navigation}) {
 }
 
 function AboutPageTitle({pictureName, navigation}) {
-    const pictureNameString = pictureName.split("_");
-    let noPicture = pictureNameString[1];
-    if(!noPicture) noPicture = 1;
-    let chatNameNumber = "chat_"+noPicture;
 
     return (
         <View style={{display: 'flex', flexDirection: "row"}}>
@@ -36,7 +32,7 @@ function AboutPageTitle({pictureName, navigation}) {
             <FontAwesomeIcon icon={ faVideo } size={40}/>
             </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: chatNameNumber })}>
+            <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: pictureName })}>
             <View style={{alignItems: "flex-start", justifyContent: "flex-start", paddingLeft: 20, paddingTop: 6}}>
             <FontAwesomeIcon icon={ faMessage } size={30}/>
             </View>

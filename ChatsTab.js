@@ -14,10 +14,10 @@ function ChatsTab({navigation, lastMessages}) {
     const pictureNameString = key.split("_");
     let noPicture = pictureNameString[1];
     if(!noPicture) noPicture = 1;
-    let chatNumberName = "chat_"+noPicture;
+
     return (
       <View key={key}>
-      <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: chatNumberName })}>
+      <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: key })}>
           <View style={styles.row}>
           <View style={{width: "30%", textAlign: "center", display: 'flex', flexDirection: "column", alignItems: "center"}}>
           <Image
@@ -27,7 +27,7 @@ function ChatsTab({navigation, lastMessages}) {
           </View>
           <View style={{width: "70%"}}>
           <Text style={{fontSize: 14, paddingBottom: 10}}>{User["person"]["short_name"]} {noPicture}</Text>
-          <Text style={{color: 'gray', fontSize: 11}}>{name[chatNumberName]}</Text>
+          <Text style={{color: 'gray', fontSize: 11}}>{name[key]}</Text>
           </View>
         </View>
         </TouchableOpacity>

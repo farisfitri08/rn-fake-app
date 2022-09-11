@@ -28,7 +28,7 @@ function ContactsTab({navigation}) {
           </TouchableOpacity>
           </View>
           <View style={{width: "15%", display: 'flex', flexDirection: "row", alignItems: "flex-start", justifyContent: "flex-start", padding: 5, marginTop: 5}}>
-          <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: "chat_"+noPicture })}>
+          <TouchableOpacity onPress={() => navigation.navigate('Chat', { chatName: key })}>
           <FontAwesomeIcon icon={ faMessage } size={30}/>
           </TouchableOpacity>
           </View>

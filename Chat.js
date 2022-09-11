@@ -47,7 +47,7 @@ export default function Chat({navigation, textName}) {
   },[])
 
   useEffect(() => {
-    var newMessage = [{}];
+    var newMessage = [];
 
     checkMessageStorage().then(checkMessage => {
       if(checkMessage != null) {
@@ -81,8 +81,7 @@ export default function Chat({navigation, textName}) {
     const pictureNameString = textName.split("_");
     let noPicture = pictureNameString[1];
     if(!noPicture) noPicture = 1;
-    let pictureName = "cr_"+noPicture;
-    let pictureRef = User["images"][pictureName];
+    let pictureRef = User["images"][textName];
 
     return (
       <View style={styles.box}>
@@ -125,8 +124,7 @@ export default function Chat({navigation, textName}) {
       const pictureNameStringSplit = textName.split("_");
       let noPicture = pictureNameStringSplit[1];
       if(!noPicture) noPicture = 1;
-      let pictureName = "cr_"+noPicture;
-      let pictureRef = User["images"][pictureName];
+      let pictureRef = User["images"][textName];
       
       var parsedString = autoMessagesString.replace(/@\{(\w+)\}/g, function(match, group) {
         if (group === 'currentdate') {

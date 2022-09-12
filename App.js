@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomePage from "./HomePage.js";
-import SecondPage from "./SecondPage.js";
-import AboutPage from "./AboutPage.js";
-import Chat from "./Chat.js";
-import CameraCall from "./CameraCall.js";
-import VideoCall from "./VideoCall.js";
+import HomePage from "./pages/screen/HomePage.js";
+import SecondPage from "./pages/screen/SecondPage.js";
+import AboutPage from "./pages/screen/AboutPage.js";
+import Chat from "./pages/screen/Chat.js";
+import CameraCall from "./pages/screen/CameraCall.js";
+import VideoCall from "./pages/screen/VideoCall.js";
 import { Camera, CameraType } from "expo-camera";
 import { Provider } from "react-redux";
 import { Store } from "./redux/store";

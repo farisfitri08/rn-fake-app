@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import User from "./User";
+import User from "../../User";
 
 function ProfileTab({ navigation }) {
   const profileDisplay = Object.entries(User["images"]["person"]).map(

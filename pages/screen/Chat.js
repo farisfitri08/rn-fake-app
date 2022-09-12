@@ -12,9 +12,9 @@ import { GiftedChat } from "react-native-gifted-chat";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import User from "./User";
+import User from "../../User";
 import { useSelector, useDispatch } from "react-redux";
-import { setName } from "./redux/actions";
+import { setName } from "../../redux/actions";
 
 export default function Chat({ navigation, textName }) {
   const [messages, setMessages] = useState([]);
@@ -22,7 +22,7 @@ export default function Chat({ navigation, textName }) {
   const { name } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
-  var autoMessages = require("./autoChat.json");
+  var autoMessages = require("../../autoChat.json");
 
   async function load() {
     var messageString = JSON.stringify(messages);

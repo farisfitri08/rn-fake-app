@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import { Camera, CameraType } from "expo-camera";
 import { Video, AVPlaybackStatus, Audio } from "expo-av";
-import User from "./User";
+import User from "../../User";
 
 function VideoCall({ navigation, name, pageScreen }) {
   const [type, setType] = useState(CameraType.front);

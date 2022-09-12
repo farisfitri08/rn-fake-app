@@ -1,11 +1,11 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { Button, View, Text, Alert } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import ProfileTab from "./ProfileTab.js";
-import ContactsTab from "./ContactsTab.js";
-import ChatsTab from "./ChatsTab.js";
+import ProfileTab from "../../pages/tabs/ProfileTab.js";
+import ContactsTab from "../../pages/tabs/ContactsTab.js";
+import ChatsTab from "../../pages/tabs/ChatsTab.js";
 import { useSelector, useDispatch } from "react-redux";
-import { setName } from "./redux/actions";
+import { setName } from "../../redux/actions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Tab = createMaterialTopTabNavigator();

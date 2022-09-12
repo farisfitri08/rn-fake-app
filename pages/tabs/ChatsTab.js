@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import User from "./User";
+import User from "../../User";
 import { useSelector, useDispatch } from "react-redux";
-import { setName } from "./redux/actions";
+import { setName } from "../../redux/actions";
 
 function ChatsTab({ navigation, lastMessages }) {
   const { name } = useSelector((state) => state.userReducer);

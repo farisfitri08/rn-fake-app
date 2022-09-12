@@ -1,25 +1,35 @@
-import { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button, Platform, StatusBar } from 'react-native';
-import { Camera, CameraType } from 'expo-camera';
-import { Video, AVPlaybackStatus, Audio } from 'expo-av';
-import User from './User';
+import { useState, useEffect, useRef } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Alert,
+  Button,
+  Platform,
+  StatusBar,
+} from "react-native";
+import { Camera, CameraType } from "expo-camera";
+import { Video, AVPlaybackStatus, Audio } from "expo-av";
+import User from "./User";
 
-function VideoCall({navigation, name, pageScreen}) {
-    const [type, setType] = useState(CameraType.front);
-    const [videoSourceClick, setVideoSourceClick] = useState(null);
-    const [status, setStatus] = useState({});
-    const video = useRef(null);
+function VideoCall({ navigation, name, pageScreen }) {
+  const [type, setType] = useState(CameraType.front);
+  const [videoSourceClick, setVideoSourceClick] = useState(null);
+  const [status, setStatus] = useState({});
+  const video = useRef(null);
 
-    useEffect(() => {
-      let item_video = name;
+  useEffect(() => {
+    let item_video = name;
 
-      let videoRef = User["videos"][item_video];
+    let videoRef = User["videos"][item_video];
 
-      setVideoSourceClick(videoRef);
-    }, []);
+    setVideoSourceClick(videoRef);
+  }, []);
 
-    return (
-      <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <Video
         ref={video}
         style={styles.video}
@@ -28,49 +38,60 @@ function VideoCall({navigation, name, pageScreen}) {
         resizeMode="cover"
         isLooping
         shouldPlay
-        onPlaybackStatusUpdate={status => setStatus(() => status)}
+        onPlaybackStatusUpdate={(status) => setStatus(() => status)}
       />
-      <View style={{display: "flex", flexWrap: "wrap", flexDirection: "row", height: "100%", width: "100%"}}>
+      <View
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          flexDirection: "row",
+          height: "100%",
+          width: "100%",
+        }}
+      >
         <View style={styles.box_beside_camera}></View>
         <Camera style={styles.box_camera} type={CameraType.front}></Camera>
-        </View>
+      </View>
       <View style={styles.buttonContainer}>
-      <View style={styles.box}>
+        <View style={styles.box}>
           <Image
             style={{ width: 60, height: 60, borderRadius: 50 }}
-            source={require('./picture/camera_rotate_button.png')}
+            source={require("./picture/camera_rotate_button.png")}
           />
-      </View>
-      <View style={styles.box}>
-        <TouchableOpacity onPress={() => { 
-          (pageScreen == 'About') ? navigation.navigate('About', { pictureName: name }) : navigation.navigate('Menu')
-        }}>
-        <Image
+        </View>
+        <View style={styles.box}>
+          <TouchableOpacity
+            onPress={() => {
+              pageScreen == "About"
+                ? navigation.navigate("About", { pictureName: name })
+                : navigation.navigate("Menu");
+            }}
+          >
+            <Image
               style={{ width: 60, height: 60, borderRadius: 50 }}
-              source={require('./picture/reject_button.png')}
+              source={require("./picture/reject_button.png")}
             />
-      </TouchableOpacity>
-      </View>
-      <View style={styles.box}>
-      <Image
+          </TouchableOpacity>
+        </View>
+        <View style={styles.box}>
+          <Image
             style={{ width: 60, height: 60, borderRadius: 50 }}
-            source={require('./picture/mute_button.png')}
+            source={require("./picture/mute_button.png")}
           />
+        </View>
       </View>
-      </View>
-      
     </View>
-    );
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     ...Platform.select({
-        android: {
-            marginTop: StatusBar.currentHeight
-        }
-    })
+      android: {
+        marginTop: StatusBar.currentHeight,
+      },
+    }),
   },
   buttonContainer: {
     display: "flex",
@@ -80,8 +101,8 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    alignSelf: 'flex-end',
-    alignItems: 'center',
+    alignSelf: "flex-end",
+    alignItems: "center",
   },
   video: {
     position: "absolute",
@@ -89,31 +110,31 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
-    backgroundColor: "black"
+    backgroundColor: "black",
   },
   box: {
-    flexGrow: 1, 
-    width: "32%", 
+    flexGrow: 1,
+    width: "32%",
     margin: 2,
-    height: 100, 
+    height: 100,
     justifyContent: "center",
     alignItems: "center",
   },
   box_beside_camera: {
-    flexGrow: 1, 
-    width: "71%", 
-    height: "18%", 
+    flexGrow: 1,
+    width: "71%",
+    height: "18%",
     justifyContent: "center",
     alignItems: "center",
   },
   box_camera: {
-    flexGrow: 1, 
-    width: "23%", 
+    flexGrow: 1,
+    width: "23%",
     margin: 10,
     height: "18%",
     justifyContent: "center",
     alignItems: "center",
-  }
+  },
 });
 
 export default VideoCall;

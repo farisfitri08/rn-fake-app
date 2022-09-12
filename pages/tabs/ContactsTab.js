@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faVideo } from "@fortawesome/free-solid-svg-icons/faVideo";
 import { faMessage } from "@fortawesome/free-solid-svg-icons/faMessage";
-import User from "../../User";
+import User from "../../services/User";
 
 function ContactsTab({ navigation }) {
   const contactsDisplay = Object.entries(User["images"]["person"]).map(

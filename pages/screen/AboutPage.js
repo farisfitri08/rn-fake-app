@@ -10,7 +10,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faVideo } from "@fortawesome/free-solid-svg-icons/faVideo";
 import { faMessage } from "@fortawesome/free-solid-svg-icons/faMessage";
-import User from "../../User";
+import User from "../../services/User";
 
 function AboutPage({ pictureName, navigation }) {
   useEffect(() => {

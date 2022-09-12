@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import User from "../../User";
+import User from "../../services/User";
 import { useSelector, useDispatch } from "react-redux";
 import { setName } from "../../redux/actions";
 

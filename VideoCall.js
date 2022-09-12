@@ -23,7 +23,7 @@ function VideoCall({ navigation, name, pageScreen }) {
   useEffect(() => {
     let item_video = name;
 
-    let videoRef = User["videos"][item_video];
+    let videoRef = User["videos"]["person"][item_video];
 
     setVideoSourceClick(videoRef);
   }, []);
@@ -56,7 +56,7 @@ function VideoCall({ navigation, name, pageScreen }) {
         <View style={styles.box}>
           <Image
             style={{ width: 60, height: 60, borderRadius: 50 }}
-            source={require("./picture/camera_rotate_button.png")}
+            source={User["images"]["buttons"]["camera_rotate_button"]}
           />
         </View>
         <View style={styles.box}>
@@ -69,14 +69,14 @@ function VideoCall({ navigation, name, pageScreen }) {
           >
             <Image
               style={{ width: 60, height: 60, borderRadius: 50 }}
-              source={require("./picture/reject_button.png")}
+              source={User["images"]["buttons"]["reject_button"]}
             />
           </TouchableOpacity>
         </View>
         <View style={styles.box}>
           <Image
             style={{ width: 60, height: 60, borderRadius: 50 }}
-            source={require("./picture/mute_button.png")}
+            source={User["images"]["buttons"]["mute_button"]}
           />
         </View>
       </View>

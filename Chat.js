@@ -91,7 +91,7 @@ export default function Chat({ navigation, textName }) {
     const pictureNameString = textName.split("_");
     let noPicture = pictureNameString[1];
     if (!noPicture) noPicture = 1;
-    let pictureRef = User["images"][textName];
+    let pictureRef = User["images"]["person"][textName];
 
     return (
       <View style={styles.box}>
@@ -148,7 +148,7 @@ export default function Chat({ navigation, textName }) {
       const pictureNameStringSplit = textName.split("_");
       let noPicture = pictureNameStringSplit[1];
       if (!noPicture) noPicture = 1;
-      let pictureRef = User["images"][textName];
+      let pictureRef = User["images"]["person"][textName];
 
       var parsedString = autoMessagesString.replace(
         /@\{(\w+)\}/g,

@@ -10,29 +10,31 @@ import {
 import User from "./User";
 
 function ProfileTab({ navigation }) {
-  const profileDisplay = Object.entries(User["images"]).map(([key, value]) => {
-    const pictureNameString = key.split("_");
-    let noPicture = pictureNameString[1];
-    if (!noPicture) noPicture = 1;
-    return (
-      <View style={styles.box} key={key}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("About", { pictureName: key })}
-        >
-          <View style={styles.column}>
-            <Image
-              style={{ width: 50, height: 50, borderRadius: 50 }}
-              source={User["images"][key]}
-            />
-            <Text style={{ fontSize: 14 }}>
-              {User["person"]["short_name"]} {noPicture}
-            </Text>
-            <Text style={{ color: "gray", fontSize: 10 }}>Active Now</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
-  });
+  const profileDisplay = Object.entries(User["images"]["person"]).map(
+    ([key, value]) => {
+      const pictureNameString = key.split("_");
+      let noPicture = pictureNameString[1];
+      if (!noPicture) noPicture = 1;
+      return (
+        <View style={styles.box} key={key}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("About", { pictureName: key })}
+          >
+            <View style={styles.column}>
+              <Image
+                style={{ width: 50, height: 50, borderRadius: 50 }}
+                source={User["images"]["person"][key]}
+              />
+              <Text style={{ fontSize: 14 }}>
+                {User["person"]["short_name"]} {noPicture}
+              </Text>
+              <Text style={{ color: "gray", fontSize: 10 }}>Active Now</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+  );
 
   return <View style={styles.container}>{profileDisplay}</View>;
 }

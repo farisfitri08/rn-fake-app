@@ -16,42 +16,44 @@ function ChatsTab({ navigation, lastMessages }) {
   const dispatch = useDispatch();
   const [lastText, setLastText] = useState({});
 
-  const chatsDisplay = Object.entries(User["images"]).map(([key, value]) => {
-    const pictureNameString = key.split("_");
-    let noPicture = pictureNameString[1];
-    if (!noPicture) noPicture = 1;
+  const chatsDisplay = Object.entries(User["images"]["person"]).map(
+    ([key, value]) => {
+      const pictureNameString = key.split("_");
+      let noPicture = pictureNameString[1];
+      if (!noPicture) noPicture = 1;
 
-    return (
-      <View key={key}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Chat", { chatName: key })}
-        >
-          <View style={styles.row}>
-            <View
-              style={{
-                width: "30%",
-                textAlign: "center",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Image
-                style={{ width: 50, height: 50, borderRadius: 50 }}
-                source={User["images"][key]}
-              />
+      return (
+        <View key={key}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Chat", { chatName: key })}
+          >
+            <View style={styles.row}>
+              <View
+                style={{
+                  width: "30%",
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Image
+                  style={{ width: 50, height: 50, borderRadius: 50 }}
+                  source={User["images"]["person"][key]}
+                />
+              </View>
+              <View style={{ width: "70%" }}>
+                <Text style={{ fontSize: 14, paddingBottom: 10 }}>
+                  {User["person"]["short_name"]} {noPicture}
+                </Text>
+                <Text style={{ color: "gray", fontSize: 11 }}>{name[key]}</Text>
+              </View>
             </View>
-            <View style={{ width: "70%" }}>
-              <Text style={{ fontSize: 14, paddingBottom: 10 }}>
-                {User["person"]["short_name"]} {noPicture}
-              </Text>
-              <Text style={{ color: "gray", fontSize: 11 }}>{name[key]}</Text>
-            </View>
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
-  });
+          </TouchableOpacity>
+        </View>
+      );
+    }
+  );
   return <View style={styles.container}>{chatsDisplay}</View>;
 }
 

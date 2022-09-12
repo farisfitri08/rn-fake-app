@@ -69,7 +69,7 @@ function CameraCall({ navigation, cameraCallName, permission, pageScreen }) {
           >
             <Image
               style={{ width: 90, height: 90, borderRadius: 50 }}
-              source={User["images"][cameraCallName]}
+              source={User["images"]["person"][cameraCallName]}
             />
           </View>
           <View style={{ display: "flex", alignSelf: "center", padding: 9 }}>
@@ -96,7 +96,7 @@ function CameraCall({ navigation, cameraCallName, permission, pageScreen }) {
               >
                 <Image
                   style={{ width: 60, height: 60, borderRadius: 50 }}
-                  source={require("./picture/reject_button.png")}
+                  source={User["images"]["buttons"]["reject_button"]}
                 />
               </TouchableOpacity>
             </View>
@@ -116,7 +116,7 @@ function CameraCall({ navigation, cameraCallName, permission, pageScreen }) {
               >
                 <Image
                   style={{ width: 60, height: 60, borderRadius: 50 }}
-                  source={require("./picture/accept_video_button.png")}
+                  source={User["images"]["buttons"]["accept_video_button"]}
                 />
               </TouchableOpacity>
             </View>
@@ -131,7 +131,7 @@ function CameraCall({ navigation, cameraCallName, permission, pageScreen }) {
 
 async function playSound() {
   const { sound } = await Audio.Sound.createAsync(
-    require("./ringtone/ringtone_whatsapp_video_call.mp3")
+    User["ringtone"]["video_call"]
   );
 
   await sound.playAsync();

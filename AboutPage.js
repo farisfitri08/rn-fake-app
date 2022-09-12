@@ -27,7 +27,7 @@ function AboutPage({ pictureName, navigation }) {
         <Image
           style={{ width: "100%", height: "100%", borderRadius: 25 }}
           resizeMode="contain"
-          source={User["images"][pictureName]}
+          source={User["images"]["person"][pictureName]}
         />
       </View>
     </View>

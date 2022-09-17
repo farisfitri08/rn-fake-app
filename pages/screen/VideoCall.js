@@ -13,6 +13,7 @@ import {
 import { Camera, CameraType } from "expo-camera";
 import { Video, AVPlaybackStatus, Audio } from "expo-av";
 import User from "../../services/User";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 function VideoCall({ navigation, name, pageScreen }) {
   const [type, setType] = useState(CameraType.front);
@@ -29,7 +30,7 @@ function VideoCall({ navigation, name, pageScreen }) {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView>
       <Video
         ref={video}
         style={styles.video}
@@ -80,18 +81,13 @@ function VideoCall({ navigation, name, pageScreen }) {
           />
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    ...Platform.select({
-      android: {
-        marginTop: StatusBar.currentHeight,
-      },
-    }),
   },
   buttonContainer: {
     display: "flex",

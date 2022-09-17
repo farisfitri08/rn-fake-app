@@ -14,6 +14,7 @@ import {
 import { Camera, CameraType } from "expo-camera";
 import { Video, AVPlaybackStatus, Audio } from "expo-av";
 import User from "../../services/User";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 function CameraCall({ navigation, cameraCallName, permission, pageScreen }) {
   const [type, setType] = useState(CameraType.front);
@@ -61,7 +62,7 @@ function CameraCall({ navigation, cameraCallName, permission, pageScreen }) {
   }, [sound]);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {permission ? (
         <Camera style={styles.camera} type={type}>
           <View
@@ -125,7 +126,7 @@ function CameraCall({ navigation, cameraCallName, permission, pageScreen }) {
       ) : (
         <Text>Please Accept Permission to make Video Call</Text>
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -146,11 +147,6 @@ async function removeSoundCall() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    ...Platform.select({
-      android: {
-        marginTop: StatusBar.currentHeight,
-      },
-    }),
   },
   camera: {
     flex: 1,

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pc-api-4938203731340491516-276",
+  "private_key_id": "d56ef0872e7e4526124d7004e03cb786969e6616",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDPRR/rSzvkDAV8\nX9hYkNcx9edCTU4CGoIN5DkHo8snaMyKN4SspBzELyiD0vzS/aCbet5o2hhukCpA\nbCP7LwW/m6UgLZ8zISR0FU+JLTAlQXQ4XVKUCKNzxPmDPFlfZtIDq+YeidiIz86m\nDQ8tuC9Awwa9fBn51RSUjmpkFMAFUXIBHa30B29l2jiNxS2FfFcBhT7DLO0JzVZb\n0aQmn+c1oWnQs1Mee4/JFDVX6Ute6MHDxdh2Pm8uNtGjlksMFkT1lq/vlikx67HM\nNQcBqadYhL13XH8oTp/px2Iszz4L6JZGUIVI9ro9hVLrygBsXGdmDGNyprEDLuAM\nc+dmxhwzAgMBAAECggEAOy64q33C7x3Dnzza0Ici+yAE1XivUohxJDhLVHQfePRC\nmyC5IHaHxDjW77UZ/cDv0BVoVjYYDdHaTqTSLVHC6XAu2R5Nu9K1zvOaz0d43Npw\nrftvrdc9nLvcpu1fc48vXl8CCSxBCOeVUPKfp+VUkMBfN1GtNRnzk2uK02LdZWbV\nZDaMNHrttLxJfFq3I2Ay2U8AHHY4DxpEpCcNkHNqNiGi9VkraHFZqlj0DFF0QlX8\nH10PiEIPWMcJa/lVD7OQAWecDq1e88z643Jp8th5CmKGuWNDWHvtvkcAF7Ksqbpm\nkT3fpNzQDUjboMFma49sr5nWNu0pw3m6poQrZQnriQKBgQDwgA1Fp8/RBQWr7NNR\nVlkUvmOUiXwsNmqSsNl+bqt71bj3BOBL0Pb8aZRJSb69uLnUj44oIkeW74iPYnJt\nlhwrb7P2na/XSyewYIXqQCsemGrA145SJExL51SoS861xK3lfW7nDpnA8uorALKl\nH+ynGi6rtGKWbmnP8V3MaEZqLwKBgQDcoNEk03ILeEPH85W64oz2subf9JKpvhvA\n1IxLpbEaaC/KRLc0wRCzqap9Z7X2LvS1479RJkqL3qq5/4vZSbLpSV5/SLbeMNv2\nzIJfSxzUsR0hvXpqMpK8DzAjjMaF1m8fi6fjfr6xjOp2RVcJQhioqAl4T49Ejqzf\n1pdmQq1hPQKBgQCSJS5rgqNdoBCnPh3X0oIFggCfVcC4WUT/6Snxk6zvbpucuEDY\nsZ41Gq96ra6UObnrOmUnbFVWmi7A+xEQGOT7XEDe/0nIqanvm2glRmMtj29nylV5\nAwe+JFAkiRSPDnqh90w6anvybWrxQNZOU40KqnVr8Azs3yG7tC/MtBz+DwKBgQCG\nDznGFK1Bhuw4vSwICMz6wi5Dewr7FUcr3nr5JE7+6rvPPf3Mkluhr8CmvrP0SQfs\n1dxUZN37K2u15S+G8p9B3ZEL6pUjYbDmv9GgMbXtD0nSTJ3rlZtPpjLsBwhCHtAa\n7PMw6rzYifWVtAB04bK2GJTYhA9b6w3kXTJVssJDSQKBgQCkdbwQATlDfeOOetxJ\nVVPfPhWxZUn2+omcZPIFzTAU6qPvO5d86xuq17x2yUCujb1AGbThZ9IyBh6IxZyU\nsNx2VCotXArPDFaUYLwhaS6dS/ZSUCKcmk0bdb2yp2ANHBlFg+s6QcfjYt7SOCDn\nx9HKekXVdxCr7fGeSbfU6t7vhQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "cristiano-ronaldo-fake-video-c@pc-api-4938203731340491516-276.iam.gserviceaccount.com",
+  "client_id": "116261823539391923247",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cristiano-ronaldo-fake-video-c%40pc-api-4938203731340491516-276.iam.gserviceaccount.com"
+}

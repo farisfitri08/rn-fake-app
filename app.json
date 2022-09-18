@@ -2,8 +2,8 @@
   "expo": {
     "name": "Cristiano Ronaldo Fake Video Call & Chat",
     "slug": "cristianoRonaldoFakeVideoCallAndChat",
-    "version": "1.0.7",
-    "orientation": "default",
+    "version": "1.0.8",
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -20,7 +20,7 @@
     },
     "android": {
       "package": "com.cristianoRonaldoFakeVideoCallAndChat",
-      "versionCode": 9,
+      "versionCode": 10,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

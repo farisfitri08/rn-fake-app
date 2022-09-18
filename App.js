@@ -10,6 +10,7 @@ import VideoCall from "./pages/screen/VideoCall.js";
 import { Camera, CameraType } from "expo-camera";
 import { Provider } from "react-redux";
 import { Store } from "./redux/store";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 function HomeScreen({ navigation }) {
   return <HomePage navigation={navigation} />;
@@ -69,38 +70,42 @@ function App() {
 
   return (
     <Provider store={Store}>
-      <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{ headerStyle: { backgroundColor: "#FFFFFF" } }}
-          />
-          <Stack.Screen
-            name="Menu"
-            component={MenuScreen}
-            options={{ headerStyle: { backgroundColor: "#FFFFFF" } }}
-          />
-          <Stack.Screen
-            name="About"
-            component={AboutScreen}
-            options={{ headerStyle: { backgroundColor: "#FFFFFF" } }}
-          />
-          <Stack.Screen
-            name="Chat"
-            component={ChatScreen}
-            options={{ headerStyle: { backgroundColor: "#FFFFFF" } }}
-          />
-          <Stack.Screen name="CameraCall" options={{ headerShown: false }}>
-            {(props) => <CameraCallScreen {...props} permission={permission} />}
-          </Stack.Screen>
-          <Stack.Screen
-            name="VideoCall"
-            options={{ headerShown: false }}
-            component={VideoCallScreen}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <NavigationContainer theme={MyTheme}>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen
+              name="Home"
+              component={HomeScreen}
+              options={{ headerStyle: { backgroundColor: "#FFFFFF" } }}
+            />
+            <Stack.Screen
+              name="Menu"
+              component={MenuScreen}
+              options={{ headerStyle: { backgroundColor: "#FFFFFF" } }}
+            />
+            <Stack.Screen
+              name="About"
+              component={AboutScreen}
+              options={{ headerStyle: { backgroundColor: "#FFFFFF" } }}
+            />
+            <Stack.Screen
+              name="Chat"
+              component={ChatScreen}
+              options={{ headerStyle: { backgroundColor: "#FFFFFF" } }}
+            />
+            <Stack.Screen name="CameraCall" options={{ headerShown: false }}>
+              {(props) => (
+                <CameraCallScreen {...props} permission={permission} />
+              )}
+            </Stack.Screen>
+            <Stack.Screen
+              name="VideoCall"
+              options={{ headerShown: false }}
+              component={VideoCallScreen}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
     </Provider>
   );
 }

@@ -1,5 +1,12 @@
 import * as React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faVideo } from "@fortawesome/free-solid-svg-icons/faVideo";
 import { faMessage } from "@fortawesome/free-solid-svg-icons/faMessage";
@@ -72,7 +79,11 @@ function ContactsTab({ navigation }) {
       );
     }
   );
-  return <View style={styles.container}>{contactsDisplay}</View>;
+  return (
+    <ScrollView>
+      <View style={styles.container}>{contactsDisplay}</View>
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({

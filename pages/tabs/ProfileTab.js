@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Alert,
+  ScrollView,
 } from "react-native";
 import User from "../../services/User";
 
@@ -36,7 +37,11 @@ function ProfileTab({ navigation }) {
     }
   );
 
-  return <View style={styles.container}>{profileDisplay}</View>;
+  return (
+    <ScrollView>
+      <View style={styles.container}>{profileDisplay}</View>
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({

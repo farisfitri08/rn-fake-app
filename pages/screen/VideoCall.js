@@ -30,7 +30,7 @@ function VideoCall({ navigation, name, pageScreen }) {
   }, []);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Video
         ref={video}
         style={styles.video}

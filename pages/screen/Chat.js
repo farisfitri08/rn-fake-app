@@ -18,11 +18,11 @@ import { setName } from "../../redux/actions";
 
 export default function Chat({ navigation, textName }) {
   const [messages, setMessages] = useState([]);
-  const [nowOnlineStatus, setNowOnlineStatus] = useState("Online");
   const { name } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
   var autoMessages = require("../../services/autoChat.json");
+  var intervalCountTimer;
 
   async function load() {
     var messageString = JSON.stringify(messages);
@@ -51,8 +51,15 @@ export default function Chat({ navigation, textName }) {
   }
 
   useEffect(() => {
+    var nowOnlineStatus = "Online";
     navigation.setOptions({
-      headerTitle: (props) => <LogoTitle {...props} textName={textName} />,
+      headerTitle: (props) => (
+        <LogoTitle
+          {...props}
+          textName={textName}
+          nowOnlineStatus={nowOnlineStatus}
+        />
+      ),
     });
     (async () => load())();
   }, []);
@@ -71,23 +78,18 @@ export default function Chat({ navigation, textName }) {
 
   useEffect(() => {
     var sizeMessages = Object.keys(messages).length;
+    var nowOnlineStatus = "Online";
     if (sizeMessages > 0) {
       var lastMessage = messages[0];
 
-      var nowOnlineStatus = "Online";
-      if ("chat" in lastMessage) {
+      if (!("chat" in lastMessage)) {
         nowOnlineStatus = "Typing...";
       }
-
-      setNowOnlineStatus(nowOnlineStatus);
-      navigation.setOptions({
-        headerTitle: (props) => <LogoTitle {...props} textName={textName} />,
-      });
-      (async () => load())();
     }
+    (async () => load())();
   }, [messages, textName]);
 
-  function LogoTitle({ e, textName }) {
+  function LogoTitle({ e, textName, nowOnlineStatus }) {
     const pictureNameString = textName.split("_");
     let noPicture = pictureNameString[1];
     if (!noPicture) noPicture = 1;
@@ -123,12 +125,40 @@ export default function Chat({ navigation, textName }) {
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, messages)
     );
+    clearInterval(intervalCountTimer);
+    var countTimer = 0;
+    intervalCountTimer = setInterval(function () {
+      countTimer++;
+      if (countTimer == 5) {
+        clearInterval(intervalCountTimer);
+        var nowOnlineStatus = "Typing...";
+        navigation.setOptions({
+          headerTitle: (props) => (
+            <LogoTitle
+              {...props}
+              textName={textName}
+              nowOnlineStatus={nowOnlineStatus}
+            />
+          ),
+        });
+        autoBot();
+      }
+    }, 1000);
     load(messages);
-    autoBot();
   }, []);
 
-  const autoBot = useCallback((messages = []) => {
+  const autoBot = () => {
     setTimeout(() => {
+      var nowOnlineStatus = "Online";
+      navigation.setOptions({
+        headerTitle: (props) => (
+          <LogoTitle
+            {...props}
+            textName={textName}
+            nowOnlineStatus={nowOnlineStatus}
+          />
+        ),
+      });
       var dt = new Date().getTime();
       var newId = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
         /[xy]/g,
@@ -171,7 +201,7 @@ export default function Chat({ navigation, textName }) {
 
       load(autoMessage);
     }, 3000);
-  }, []);
+  };
 
   const styles = StyleSheet.create({
     box: {

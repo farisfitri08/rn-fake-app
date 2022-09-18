@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Alert,
+  ScrollView,
 } from "react-native";
 import User from "../../services/User";
 import { useSelector, useDispatch } from "react-redux";
@@ -54,7 +55,11 @@ function ChatsTab({ navigation, lastMessages }) {
       );
     }
   );
-  return <View style={styles.container}>{chatsDisplay}</View>;
+  return (
+    <ScrollView>
+      <View style={styles.container}>{chatsDisplay}</View>
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({

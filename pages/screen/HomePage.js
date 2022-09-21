@@ -72,7 +72,7 @@ function HomePage({ navigation }) {
             color: "white",
           }}
         >
-          START
+          START NOW
         </Text>
       </TouchableHighlight>
       <TouchableHighlight
